@@ -1,0 +1,358 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<filters>
+
+</filters>
+<body>
+
+    <a-scene>
+        <a-assets>
+            <a-asset-item id="truck" src="\Users\rhysc\source\repos\models\Dumb_Truck.glb"></a-asset-item>
+        </a-assets>
+        <a-entity position="8 2 8" rotation="0 0 0">
+            <a-entity camera look-controls wasd-controls>
+                <a-entity cursor="fuse: true; fuseTimeout: 500"
+                          position="0 0 -2"
+                          geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.027"
+                          material="color: black; shader: flat"
+  			</a-entity>
+            </a-entity>
+        </a-entity>
+        <a-box position="-1 -1 -1" depth="0.5" width="0.5" height="0.5" id="controlA" class="controlsSub"></a-box>
+        <a-box position="0 -1 -1" depth="0.5" width="0.5" height="0.5" id="controlB" class="controlsSub"></a-box>
+        <a-box position="1 -1 -1" depth="0.5" width="0.5" height="0.5" id="controlC" class="controlsSub"></a-box>
+        <a-box position="2 -1 -1" depth="0.5" width="0.5" height="0.5" id="controlD" class="controlsSub"></a-box>
+
+        <a-box position="0 0 -1" depth="0.5" width="0.5" height="0.5" id="controlE" class="controlsMain"></a-box>
+        <a-box position="1 0 -1" depth="0.5" width="0.5" height="0.5" id="controlF" class="controlsMain"></a-box>
+        <a-gltf-model src="https://cdn.glitch.com/2ac38024-1397-457b-a86f-b33d01b5a647%2FDump_Truck.glb?v=1594570000113"></a-gltf-model>
+        
+        <a-entity gltf-model="#truck"></a-entity>
+
+        <!--a-text value="Cars" position="-9 2 -4.8" rotation="0 90 0" color="black" align="center" class="carBar"></!-a-text>
+    <a-text value="LCVs" position="-9 2 -3.8" rotation="0 90 0" color="black" align="center" class="lcvBar"></a-text>
+    <a-text value="HGVs" position="-9 2 -2.8" rotation="0 90 0" color="black" align="center" class="hgvBar"></a-text>
+    <a-text value="Other" position="-9 2 -1.8" rotation="0 90 0" color="black" align="center" class="otherBar"></a-text-->
+
+        <a-entity light="type: point; color: 'white'; intensity: 0.5" position="20 40 20"></a-entity>
+        <a-entity light="type: point; color: 'white'; intensity: 0.5" position="-20 40 20"></a-entity>
+        <a-sky color="#c8f8e0"></a-sky>
+    </a-scene>
+
+    <script>
+  	// default alpha for bars
+	var alpha = 0.8
+        var rowSetting = 3
+        var percentageGraph = false
+        var carBar
+        var lcvBar
+        var hgvBar
+        var otherBar
+        var loadedData
+
+        const trafficData = [
+            [1.6, 2.4, 2.3, 1.7, 1.7, 2.2, 2.3, 1.8, 1.4], //other data
+            [6.5, 7.0, 7.0, 6.9, 6.6, 6.9, 7.1, 6.9, 6.3], //heavy goods veichles data
+            [19.3, 20.9, 21.2, 20.6, 19.5, 20.7, 21.2, 20.5, 18.6], //light comercial data
+            [95.9, 105.4, 105.8, 103.3, 97.9, 105.8, 107.2, 102.2, 88.1], //car data
+            [123.4, 135.8, 136.3, 132.5, 125.7, 135.7, 137.7, 131.5, 114.5] //total data
+        ]
+        console.log(trafficData[0][0])
+        console.log(fixed(1.6 / 1/6))
+        const percentageData = [
+            [fixed(trafficData[0][0] / trafficData[0][0]), fixed((trafficData[0][1] - trafficData[0][0]) / trafficData[0][0]), fixed((trafficData[0][2] - trafficData[0][1]) / trafficData[0][1]), fixed((trafficData[0][3] - trafficData[0][2]) / trafficData[0][2]), fixed((trafficData[0][4] - trafficData[0][3]) / trafficData[0][3]), fixed((trafficData[0][5] - trafficData[0][4]) / trafficData[0][4]), fixed((trafficData[0][6] - trafficData[0][5]) / trafficData[0][5]), fixed((trafficData[0][7] - trafficData[0][6]) / trafficData[0][6]), fixed((trafficData[0][8] - trafficData[0][7]) / trafficData[0][7])],
+            [fixed(trafficData[1][0] / trafficData[1][0]), fixed((trafficData[1][1] - trafficData[1][0]) / trafficData[1][0]), fixed((trafficData[1][2] - trafficData[1][1]) / trafficData[1][1]), fixed((trafficData[1][3] - trafficData[1][2]) / trafficData[1][2]), fixed((trafficData[1][4] - trafficData[1][3]) / trafficData[1][3]), fixed((trafficData[1][5] - trafficData[1][4]) / trafficData[1][4]), fixed((trafficData[1][6] - trafficData[1][5]) / trafficData[1][5]), fixed((trafficData[1][7] - trafficData[1][6]) / trafficData[1][6]), fixed((trafficData[1][8] - trafficData[1][7]) / trafficData[1][7])],
+            [fixed(trafficData[2][0] / trafficData[2][0]), fixed((trafficData[2][1] - trafficData[2][0]) / trafficData[2][0]), fixed((trafficData[2][2] - trafficData[2][1]) / trafficData[2][1]), fixed((trafficData[2][3] - trafficData[2][2]) / trafficData[2][2]), fixed((trafficData[2][4] - trafficData[2][3]) / trafficData[2][3]), fixed((trafficData[2][5] - trafficData[2][4]) / trafficData[2][4]), fixed((trafficData[2][6] - trafficData[2][5]) / trafficData[2][5]), fixed((trafficData[2][7] - trafficData[2][6]) / trafficData[2][6]), fixed((trafficData[2][8] - trafficData[2][7]) / trafficData[2][7])],
+            [fixed(trafficData[3][0] / trafficData[3][0]), fixed((trafficData[3][1] - trafficData[3][0]) / trafficData[3][0]), fixed((trafficData[3][2] - trafficData[3][1]) / trafficData[3][1]), fixed((trafficData[3][3] - trafficData[3][2]) / trafficData[3][2]), fixed((trafficData[3][4] - trafficData[3][3]) / trafficData[3][3]), fixed((trafficData[3][5] - trafficData[3][4]) / trafficData[3][4]), fixed((trafficData[3][6] - trafficData[3][5]) / trafficData[3][5]), fixed((trafficData[3][7] - trafficData[3][6]) / trafficData[3][6]), fixed((trafficData[3][8] - trafficData[3][7]) / trafficData[3][7])],
+            [fixed(trafficData[4][0] / trafficData[4][0]), fixed((trafficData[4][1] - trafficData[4][0]) / trafficData[4][0]), fixed((trafficData[4][2] - trafficData[4][1]) / trafficData[4][1]), fixed((trafficData[4][3] - trafficData[4][2]) / trafficData[4][2]), fixed((trafficData[4][4] - trafficData[4][3]) / trafficData[4][3]), fixed((trafficData[4][5] - trafficData[4][4]) / trafficData[4][4]), fixed((trafficData[4][6] - trafficData[4][5]) / trafficData[4][5]), fixed((trafficData[4][7] - trafficData[4][6]) / trafficData[4][6]), fixed((trafficData[4][8] - trafficData[4][7]) / trafficData[4][7])]
+
+        ]
+        var quarters = ['Q1-18', 'Q2-18', 'Q3-18', 'Q4-18', 'Q1-19', 'Q2-19', 'Q3-19', 'Q4-19', 'Q1-20']
+
+        
+    // we scale the height of our bars using d3's linear scale
+    var hscale = d3.scale.linear()
+    	.domain([0, d3.max(trafficData[3])])
+    	.range([0, 3])
+    // we select the scene object just like an svg
+        var scene = d3.select("a-scene")
+        loadData(percentageData)
+        function loadData(dataToUse) {
+            carBar = scene.selectAll("a-box.carBar").data(dataToUse[3])
+            lcvBar = scene.selectAll("a-box.lcvBar").data(dataToUse[2])
+            hgvBar = scene.selectAll("a-box.hgvBar").data(dataToUse[1])
+            otherBar = scene.selectAll("a-box.otherBar").data(dataToUse[0])
+            loadedData = dataToUse
+        }
+    // we use d3's enter/update/exit pattern to draw and bind our dom elements
+       
+        var carLabel = scene.selectAll("a-text.veichleType").data("Cars")
+        var lcvLabel = scene.selectAll("a-text.veichleType").data("LCVs")
+        var hgvLabel = scene.selectAll("a-text.veichleType").data("HGVs")
+        var otherLabel = scene.selectAll("a-text.veichleType").data("Other")
+        var backPanel = scene.selectAll("a-plane#backPanel").data("backPanel")
+        var sidePanel = scene.selectAll("a-panel#sidePanel").data("sidePanel")
+
+        createGraph(rowSetting)
+
+        function createLabel(labelID, labelText,z) {
+            labelID.enter().append("a-text").classed(labelID, true)
+            labelID.attr({
+                color: 'black',
+                align: 'center',
+                position: '-1 4 '+z,
+                rotation: '0 90 0',
+                value: labelText
+            })
+        }
+
+        var controlA = d3.select("#controlA")
+        .on("click", function () {
+                console.log("Shifting Graph to form A")
+            clear()
+            rowSetting = 3
+            createGraph()
+            d3.selectAll(".controlsSub")
+                .attr({
+                    "color": "grey"
+                })
+            d3.select(this)
+                .attr({
+                    "color": "green"
+                })
+        })
+            
+        var controlB = d3.select("#controlB")
+            .on("click", function () {
+                console.log("Shifting Graph to form B")
+                clear()
+                rowSetting = 2
+                createGraph()
+                d3.selectAll(".controlsSub")
+                    .attr({
+                        "color": "grey"
+                    })
+                d3.select(this)
+                    .attr({
+                        "color": "green"
+                    })
+            })
+            
+        var controlC = d3.select("#controlC")
+            .on("click", function () {
+                console.log("Shifting Graph to form C")
+                clear()
+                rowSetting = 1
+                createGraph()
+                d3.selectAll(".controlsSub")
+                    .attr({
+                        "color": "grey"
+                    })
+                d3.select(this)
+                    .attr({
+                        "color": "green"
+                    })
+            })
+            
+        var controlD = d3.select("#controlD")
+            .on("click", function () {
+                console.log("Shifting Graph to form D")
+                clear()
+                rowSetting = 0
+                createGraph()
+                d3.selectAll(".controlsSub")
+                    .attr({
+                        "color":"grey"
+                    })
+                d3.select(this)
+                    .attr({
+                        "color":"green"
+                    })
+            })
+
+        var controlE = d3.select("#controlE")
+            .on("click", function () {
+                console.log("Shifting Graph to form Percentage Based")
+                clear()
+                loadData(percentageData)
+                createGraph()
+                d3.selectAll(".controlsMain")
+                    .attr({
+                        "color": "grey"
+                    })
+                d3.select(this)
+                    .attr({
+                        "color": "green"
+                    })
+            })
+        var controlF = d3.select("#controlF")
+            .on("click", function () {
+                console.log("Shifting Graph to form Amount Based")
+                clear()
+                loadData(trafficData)
+                createGraph()
+                d3.selectAll(".controlsMain")
+                    .attr({
+                        "color": "grey"
+                    })
+                d3.select(this)
+                    .attr({
+                        "color": "green"
+                    })
+            })
+        function fixed(x) {
+            return Number.parseFloat(x).toFixed(2);
+        }
+
+        function clear() {
+            carBar.remove()
+            lcvBar.remove()
+            hgvBar.remove()
+            otherBar.remove()
+            carLabel.remove()
+            lcvLabel.remove()
+            hgvLabel.remove()
+            otherLabel.remove()
+            backPanel.remove()
+        }
+        function createGraph() {
+
+            hscale = d3.scale.linear()
+                .domain([0, d3.max(loadedData[rowSetting])])
+                .range([0, 3])
+
+           var maxDepth = 5 
+            createRow(otherBar, 6, "otherBar")
+            createLabel(otherLabel, "Other", 6)
+
+            if (rowSetting > 0) {
+                maxDepth = 4
+                createRow(hgvBar, 5, "hgvBar")
+                createLabel(hgvLabel, "HGVs", 5)
+            }
+            if (rowSetting > 1) {
+                maxDepth = 3
+                createRow(lcvBar, 4, "lcvBar")
+                createLabel(lcvLabel, "LCVs", 4)
+            }
+            if (rowSetting > 2) {
+                maxDepth = 2
+                createRow(carBar, 3, "carBar")
+                createLabel(carLabel, "Cars", 3)
+            }
+
+            backPanel.enter().append("a-plane")
+            backPanel.attr({
+                position: 3 + " " + 2 + " " + maxDepth,
+                width: 8,
+                height: 6,
+                id: "#backPanel"
+            })
+            sidePanel.enter().append("a-plane")
+            sidePanel.attr({
+                position: -1 + " " + 2 + " " + 5,
+                rotation: "0 90 0",
+                width: 6,
+                height: 6,
+                id: "#backPanel"
+            })
+
+            var quarterIDs = scene.selectAll("a-text.quarterText").data(quarters)
+            quarterIDs.enter().append("a-text").classed("quarterText", true)
+            quarterIDs.attr({
+                color: 'black',
+                align: 'center',
+                position: function (d,i) {
+                    var x = i * 0.75
+                    var y = 4;
+                    var z = maxDepth
+                    return x + " " + y + " " + z
+                },
+                value: function (d) { return d }
+            })
+        }
+
+        
+
+
+        function createRow(bar,depth,barString) {
+            bar.enter().append("a-box").classed(barString, true)
+            $("." + barString).append("<a-text class=\"data\"> </a-text>");
+
+            // we set attributes on our cubes to determine how they are rendered
+            bar.attr({
+                position: function (d, i) {
+                    var x = i * .75
+                    var y = hscale(d) / 2;
+                    var z = depth
+                    return x + " " + y + " " + z
+                },
+                width: function (d) { return 0.5 },
+                depth: function (d) { return 0.5 },
+                height: function (d) { return hscale(d) },
+                color: 'red'
+            })
+                // i = coulmn iteration      d = actual stored data value
+                .on("click", function (d, i) {
+                    console.log("click", i, d)
+                })
+                .on("mouseenter", function (d, i) {
+                    // this event gets fired continuously as long as the cursor
+                    // is over the element. we only want trigger our animation the first time
+                    if (this.hovering) return
+                    console.log("hover", i, d)
+                    this.hovering = true;
+                    d3.select(this).transition().duration(10)
+                        .attr({
+                            metalness: 0.8,
+                            opacity: .9
+                        })
+                    d3.select(this).select(".data")
+                        .attr({
+                            'color': 'hsla(240, 100%, 25%, 0.6)',
+                            'align': 'center',
+                            'position': '0 ' + (hscale(d) / 2 + .5) + ' 0',
+                            'scale': '1 1 1',
+                            'value': d
+                        })
+                })
+                .on("mouseleave", function (d, i) {
+                    console.log("leave", i, d)
+                    this.hovering = false;
+                    d3.select(this).transition().duration(500)
+                        .attr({
+                            metalness: 0,
+                            opacity: alpha
+                        })
+                    d3.select(this).select("a-text")
+                        .attr({
+                            'color': 'blue',
+                            'align': 'center',
+                            'position': '0 ' + (hscale(d) / 2 + .5) + ' 0',
+                            'scale': '.01 .01 .01',
+                            'value': d
+                        })
+                })
+        }
+        function setColor() {
+
+        }
+    </script>
+
+    <script>
+
+    $(".bar").each(function() {
+        this.components.material.material.alphaTest = 0.5;
+      this.components.material.material.depthWrite = false;
+      this.components.material.material.needsUpdate = true;;
+    });
+
+    </script>
+
+    </body>
+</html>
