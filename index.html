@@ -1,37 +1,82 @@
-﻿<!DOCTYPE html>
+﻿﻿
+<!DOCTYPE html>
 <html>
 <head>
     <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-</head>
-<filters>
+    <script src="https://unpkg.com/aframe-geo-projection-component/dist/aframe-geo-projection-component.min.js"></script>
 
-</filters>
+</head>
+
 <body>
 
     <a-scene>
-        <a-assets>
-            <a-asset-item id="truck" src="https://rhysclawdd.github.io/Models/truck.glb"></a-asset-item>
+        <a-assets timeout="10000">
+            <a-asset-item id="json-world" src="https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_land.geojson" />
+            <a-asset-item id="json-uk" src="https://rhysclawdd.github.io/GeoJSON/NHSEngland.geojson" />
+            <a-asset-item id="truck" src="https://rhysclawdd.github.io/Models/truck.glb" />
+            <a-asset-item id="car" src="https://rhysclawdd.github.io/Models/Car/car.gltf"></a-asset-item>
+            <a-asset-item id="carScene" src="https://rhysclawdd.github.io/Models/Car/car.bin"></a-asset-item>
+            <a-asset-item id="carTextureA" src="https://rhysclawdd.github.io/Models/Car/textures/Abarth_Logo_baseColor.png"></a-asset-item>
+            <a-asset-item id="carTextureB" src="https://rhysclawdd.github.io/Models/Car/textures/Car_Paint_baseColor.png"></a-asset-item>
+
+
         </a-assets>
         <a-entity position="8 2 8" rotation="0 0 0">
             <a-entity camera look-controls wasd-controls>
                 <a-entity cursor="fuse: true; fuseTimeout: 500"
                           position="0 0 -2"
                           geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.027"
-                          material="color: black; shader: flat"></a-entity>
+                          material="color: black; shader: flat">
+                </a-entity>
             </a-entity>
         </a-entity>
+        <!--
+        <a-entity gltf-model="#car" scale="0.01 0.01 0.01"></a-entity>
+        -->
+        <a-entity gltf-model="#car" scale="1 1 1"></a-entity>
+        <!--
+        <a-entity rotation="0 0 0"
+                  geojson-loader="src: #json-world;"
+                  geo-projection="
+                  projection: geoStereographic;
+                  height: 10;
+                  width: 20;"
+                  geo-outline-renderer="color: red;">
+        </a-entity>
+            -->
+        <a-entity position="8 2 8">
+            <a-box position="0 -1.25 -1" depth="0.5" width="0.5" height="0.5" id="controlA" class="controlsSub">
+                <a-text position="1 0 0.1" value="Car" color="black" align="center"></a-text>
+            </a-box>
 
-        <a-entity gltf-model="#truck" position="0 0 0"></a-entity>
+            <a-box position="0 -0.5 -1" depth="0.5" width="0.5" height="0.5" id="controlB" class="controlsSub">
+                <a-text position="1 0 0.1" value="LCV" color="black" align="center"></a-text>
+            </a-box>
 
-        <a-box position="-1 -1 -1" depth="0.5" width="0.5" height="0.5" id="controlA" class="controlsSub"></a-box>
-        <a-box position="0 -1 -1" depth="0.5" width="0.5" height="0.5" id="controlB" class="controlsSub"></a-box>
-        <a-box position="1 -1 -1" depth="0.5" width="0.5" height="0.5" id="controlC" class="controlsSub"></a-box>
-        <a-box position="2 -1 -1" depth="0.5" width="0.5" height="0.5" id="controlD" class="controlsSub"></a-box>
+            <a-box position="0 0.25 -1" depth="0.5" width="0.5" height="0.5" id="controlC" class="controlsSub">
+                <a-text position="1 0 0.1" value="HGV" color="black" align="center"></a-text>
+            </a-box>
 
-        <a-box position="0 0 -1" depth="0.5" width="0.5" height="0.5" id="controlE" class="controlsMain"></a-box>
-        <a-box position="1 0 -1" depth="0.5" width="0.5" height="0.5" id="controlF" class="controlsMain"></a-box>
+            <a-box position="0 1 -1" depth="0.5" width="0.5" height="0.5" id="controlD" class="controlsSub">
+                <a-text position="1 0 0.1" value="Other" color="black" align="center"></a-text>
+            </a-box>
+
+            <a-box position="2 0.25 -1" depth="0.5" width="0.5" height="0.5" id="controlE" class="controlsMain">
+                <a-text position="1 0 0.1" value="Percentage" color="black" align="center"></a-text>
+            </a-box>
+            <a-box position="2 1 -1" depth="0.5" width="0.5" height="0.5" id="controlF" class="controlsMain">
+                <a-text position="1 0 0.1" value="Raw" color="black" align="center"></a-text>
+            </a-box>
+
+            <a-box position="1.8 0 -1" rotation="-1 0 0" depth="0.1" width="5" height="3" id="controlBackPlate" class="controlsFoundation" color="white"></a-box>
+        </a-entity>
+
+        <!--a-text value="Cars" position="-9 2 -4.8" rotation="0 90 0" color="black" align="center" class="carBar"></!-a-text>
+        <a-text value="LCVs" position="-9 2 -3.8" rotation="0 90 0" color="black" align="center" class="lcvBar"></a-text>
+        <a-text value="HGVs" position="-9 2 -2.8" rotation="0 90 0" color="black" align="center" class="hgvBar"></a-text>
+        <a-text value="Other" position="-9 2 -1.8" rotation="0 90 0" color="black" align="center" class="otherBar"></a-text-->
 
         <a-entity light="type: point; color: 'white'; intensity: 0.5" position="20 40 20"></a-entity>
         <a-entity light="type: point; color: 'white'; intensity: 0.5" position="-20 40 20"></a-entity>
@@ -39,8 +84,8 @@
     </a-scene>
 
     <script>
-  	// default alpha for bars
-	var alpha = 0.8
+        // default alpha for bars
+        var alpha = 0.8
         var rowSetting = 3
         var percentageGraph = false
         var carBar
@@ -57,7 +102,7 @@
             [123.4, 135.8, 136.3, 132.5, 125.7, 135.7, 137.7, 131.5, 114.5] //total data
         ]
         console.log(trafficData[0][0])
-        console.log(fixed(1.6 / 1/6))
+        console.log(fixed(1.6 / 1 / 6))
         const percentageData = [
             [fixed(trafficData[0][0] / trafficData[0][0]), fixed((trafficData[0][1] - trafficData[0][0]) / trafficData[0][0]), fixed((trafficData[0][2] - trafficData[0][1]) / trafficData[0][1]), fixed((trafficData[0][3] - trafficData[0][2]) / trafficData[0][2]), fixed((trafficData[0][4] - trafficData[0][3]) / trafficData[0][3]), fixed((trafficData[0][5] - trafficData[0][4]) / trafficData[0][4]), fixed((trafficData[0][6] - trafficData[0][5]) / trafficData[0][5]), fixed((trafficData[0][7] - trafficData[0][6]) / trafficData[0][6]), fixed((trafficData[0][8] - trafficData[0][7]) / trafficData[0][7])],
             [fixed(trafficData[1][0] / trafficData[1][0]), fixed((trafficData[1][1] - trafficData[1][0]) / trafficData[1][0]), fixed((trafficData[1][2] - trafficData[1][1]) / trafficData[1][1]), fixed((trafficData[1][3] - trafficData[1][2]) / trafficData[1][2]), fixed((trafficData[1][4] - trafficData[1][3]) / trafficData[1][3]), fixed((trafficData[1][5] - trafficData[1][4]) / trafficData[1][4]), fixed((trafficData[1][6] - trafficData[1][5]) / trafficData[1][5]), fixed((trafficData[1][7] - trafficData[1][6]) / trafficData[1][6]), fixed((trafficData[1][8] - trafficData[1][7]) / trafficData[1][7])],
@@ -68,12 +113,12 @@
         ]
         var quarters = ['Q1-18', 'Q2-18', 'Q3-18', 'Q4-18', 'Q1-19', 'Q2-19', 'Q3-19', 'Q4-19', 'Q1-20']
 
-        
-    // we scale the height of our bars using d3's linear scale
-    var hscale = d3.scale.linear()
-    	.domain([0, d3.max(trafficData[3])])
-    	.range([0, 3])
-    // we select the scene object just like an svg
+
+        // we scale the height of our bars using d3's linear scale
+        var hscale = d3.scale.linear()
+            .domain([0, d3.max(trafficData[3])])
+            .range([0, 3])
+        // we select the scene object just like an svg
         var scene = d3.select("a-scene")
         loadData(percentageData)
         function loadData(dataToUse) {
@@ -83,8 +128,8 @@
             otherBar = scene.selectAll("a-box.otherBar").data(dataToUse[0])
             loadedData = dataToUse
         }
-    // we use d3's enter/update/exit pattern to draw and bind our dom elements
-       
+        // we use d3's enter/update/exit pattern to draw and bind our dom elements
+
         var carLabel = scene.selectAll("a-text.veichleType").data("Cars")
         var lcvLabel = scene.selectAll("a-text.veichleType").data("LCVs")
         var hgvLabel = scene.selectAll("a-text.veichleType").data("HGVs")
@@ -94,33 +139,33 @@
 
         createGraph(rowSetting)
 
-        function createLabel(labelID, labelText,z) {
+        function createLabel(labelID, labelText, z) {
             labelID.enter().append("a-text").classed(labelID, true)
             labelID.attr({
                 color: 'black',
                 align: 'center',
-                position: '-1 4 '+z,
+                position: '-1 4 ' + z,
                 rotation: '0 90 0',
                 value: labelText
             })
         }
 
         var controlA = d3.select("#controlA")
-        .on("click", function () {
+            .on("click", function () {
                 console.log("Shifting Graph to form A")
-            clear()
-            rowSetting = 3
-            createGraph()
-            d3.selectAll(".controlsSub")
-                .attr({
-                    "color": "grey"
-                })
-            d3.select(this)
-                .attr({
-                    "color": "green"
-                })
-        })
-            
+                clear()
+                rowSetting = 3
+                createGraph()
+                d3.selectAll(".controlsSub")
+                    .attr({
+                        "color": "grey"
+                    })
+                d3.select(this)
+                    .attr({
+                        "color": "green"
+                    })
+            })
+
         var controlB = d3.select("#controlB")
             .on("click", function () {
                 console.log("Shifting Graph to form B")
@@ -136,7 +181,7 @@
                         "color": "green"
                     })
             })
-            
+
         var controlC = d3.select("#controlC")
             .on("click", function () {
                 console.log("Shifting Graph to form C")
@@ -152,7 +197,7 @@
                         "color": "green"
                     })
             })
-            
+
         var controlD = d3.select("#controlD")
             .on("click", function () {
                 console.log("Shifting Graph to form D")
@@ -161,11 +206,11 @@
                 createGraph()
                 d3.selectAll(".controlsSub")
                     .attr({
-                        "color":"grey"
+                        "color": "grey"
                     })
                 d3.select(this)
                     .attr({
-                        "color":"green"
+                        "color": "green"
                     })
             })
 
@@ -220,7 +265,7 @@
                 .domain([0, d3.max(loadedData[rowSetting])])
                 .range([0, 3])
 
-           var maxDepth = 5 
+            var maxDepth = 5
             createRow(otherBar, 6, "otherBar")
             createLabel(otherLabel, "Other", 6)
 
@@ -261,7 +306,7 @@
             quarterIDs.attr({
                 color: 'black',
                 align: 'center',
-                position: function (d,i) {
+                position: function (d, i) {
                     var x = i * 0.75
                     var y = 4;
                     var z = maxDepth
@@ -271,10 +316,10 @@
             })
         }
 
-        
 
 
-        function createRow(bar,depth,barString) {
+
+        function createRow(bar, depth, barString) {
             bar.enter().append("a-box").classed(barString, true)
             $("." + barString).append("<a-text class=\"data\"> </a-text>");
 
@@ -340,13 +385,13 @@
 
     <script>
 
-    $(".bar").each(function() {
-        this.components.material.material.alphaTest = 0.5;
-      this.components.material.material.depthWrite = false;
-      this.components.material.material.needsUpdate = true;;
-    });
+        $(".bar").each(function () {
+            this.components.material.material.alphaTest = 0.5;
+            this.components.material.material.depthWrite = false;
+            this.components.material.material.needsUpdate = true;;
+        });
 
     </script>
 
-    </body>
+</body>
 </html>
