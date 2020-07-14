@@ -121,7 +121,7 @@
             .range([0, 3])
         // we select the scene object just like an svg
         var scene = d3.select("a-scene")
-        loadData(percentageData)
+        loadData(trafficData)
         function loadData(dataToUse) {
             carBar = scene.selectAll("a-box.carBar").data(dataToUse[3])
             lcvBar = scene.selectAll("a-box.lcvBar").data(dataToUse[2])
