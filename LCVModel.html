@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+
+    <meta charset="utf-8" />
+    <title>Car Model</title>
+</head>
+<body>
+    <a-scene background="color: red">
+        <a-entity position="8 2 8" rotation="0 0 0">
+            <a-entity camera look-controls wasd-controls>
+                <a-entity cursor="fuse: true; fuseTimeout: 500"
+                          position="0 0 -2"
+                          geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.027"
+                          material="color: black; shader: flat">
+                </a-entity>
+            </a-entity>
+        </a-entity>
+        <a-entity id="car" position="0 0 0">
+            <a-box depth="1.75" width="2.5" height="1.5" position="-0.25 0.75 0" color="blue"></a-box>
+            <a-box depth="1.5" width="2.5" height="0.5" position="-0.25 -0.25 0" color="grey"></a-box>
+            <a-box depth="1.5" width="1" height="1.5" position="1.5 0.25 0" color="grey"></a-box>
+
+            <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="-1 -0.5 0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="1 -0.5 0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="-1 -0.5 -0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="1 -0.5 -0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+        </a-entity>
+        <script>
+
+        </script>
+    </a-scene>
+</body>
+</html>
