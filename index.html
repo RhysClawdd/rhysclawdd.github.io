@@ -84,19 +84,79 @@
                 <a-box position="1.5 0 0" depth="0.5" width="0.5" height="0.5" id="controlI" class="controlsAdv">
                     <a-text position="0 1 0" value="HGV" color="black" align="center"></a-text>
                 </a-box>
-                <a-box position="2.25 0 0" depth="0.5" width="0.5" height="0.5" id="controlJ" class="controlsAdv">
-                    <a-text position="0 1 0" value="Other" color="black" align="center"></a-text>
-                </a-box>
-                <a-box position="3 0 0" depth="0.5" width="0.5" height="0.5" id="controlK" class="controlsAdv">
-                    <a-text position="0 1 0" value="Run" color="black" align="center"></a-text>
-                </a-box>
             </a-entity>
 
 
             <a-box position="1.8 0 -1" rotation="-1 0 0" depth="0.1" width="5" height="3" id="controlBackPlate" class="controlsFoundation" color="white"></a-box>
         </a-entity>
 
-        <a-entity id="lcv" position="0 0 0" visible="true">
+        <a-entity id="carA" class="Models" position="0 0 0">
+            <a-text value="Q4-19" position="0 1 0" color="black" align="center"></a-text>
+
+            <a-box depth="1.5" width="2" height="2" position="0 0.5 0" color="grey"></a-box>
+            <a-box depth="1.5" width="1" height="1" position="1.5 0 0" color="grey"></a-box>
+            <a-box depth="1.5" width="1" height="1" position="-1.5 0 0" color="grey"></a-box>
+
+            <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="-1 -0.5 0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="1 -0.5 0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="-1 -0.5 -0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="1 -0.5 -0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+        </a-entity>
+
+
+        <a-entity id="carB" class="Models" position="0 0 0">
+            <a-text value="Q4-19" position="0 0.5 0" color="black"></a-text>
+
+            <a-box depth="1.5" width="2" height="2" position="0 0.5 0" color="grey"></a-box>
+            <a-box depth="1.5" width="1" height="1" position="1.5 0 0" color="grey"></a-box>
+            <a-box depth="1.5" width="1" height="1" position="-1.5 0 0" color="grey"></a-box>
+
+            <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="-1 -0.5 0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="1 -0.5 0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="-1 -0.5 -0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="1 -0.5 -0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+        </a-entity>
+
+        <a-entity id="carC" class="Models" position="0 0 0">
+            <a-text value="Q1-18" position="0 0.5 0" color="black"></a-text>
+
+            <a-box depth="1.5" width="2" height="2" position="0 0.5 0" color="grey"></a-box>
+            <a-box depth="1.5" width="1" height="1" position="1.5 0 0" color="grey"></a-box>
+            <a-box depth="1.5" width="1" height="1" position="-1.5 0 0" color="grey"></a-box>
+
+            <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="-1 -0.5 0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="1 -0.5 0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="-1 -0.5 -0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="1 -0.5 -0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+        </a-entity>
+
+        <a-entity id="lcvA" class="Models" position="0 0 0" visible="true">
+            <a-text value="Q1-20" position="0 0.5 0" color="black"></a-text>
+
             <a-box depth="1.75" width="2.5" height="1.5" position="-0.25 0.75 0" color="blue"></a-box>
             <a-box depth="1.5" width="2.5" height="0.5" position="-0.25 -0.25 0" color="grey"></a-box>
             <a-box depth="1.5" width="1" height="1.5" position="1.5 0.25 0" color="grey"></a-box>
@@ -114,7 +174,53 @@
                 <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
             </a-cylinder>
         </a-entity>
-        <a-entity id="hgv" visible="false">
+        <a-entity id="lcvB" class="Models" position="0 0 0" visible="true">
+            <a-text value="Q4-19" position="0 0.5 0" color="black"></a-text>
+
+            <a-box depth="1.75" width="2.5" height="1.5" position="-0.25 0.75 0" color="blue"></a-box>
+            <a-box depth="1.5" width="2.5" height="0.5" position="-0.25 -0.25 0" color="grey"></a-box>
+            <a-box depth="1.5" width="1" height="1.5" position="1.5 0.25 0" color="grey"></a-box>
+
+            <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="-1 -0.5 0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="1 -0.5 0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="-1 -0.5 -0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="1 -0.5 -0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+        </a-entity>
+        <a-entity id="lcvC" class="Models" position="0 0 0" visible="true">
+            <a-text value="Q1-18" position="0 0.5 0" color="black"></a-text>
+
+            <a-box depth="1.75" width="2.5" height="1.5" position="-0.25 0.75 0" color="blue"></a-box>
+            <a-box depth="1.5" width="2.5" height="0.5" position="-0.25 -0.25 0" color="grey"></a-box>
+            <a-box depth="1.5" width="1" height="1.5" position="1.5 0.25 0" color="grey"></a-box>
+
+            <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="-1 -0.5 0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="1 -0.5 0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="-1 -0.5 -0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="1 -0.5 -0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+        </a-entity>
+
+
+
+
+        <a-entity id="hgvA" class="Models">
+            <a-text value="Q1-20" position="0 0.5 0" color="black"></a-text>
+
             <a-entity id="truckLoad" position="0 0.5 0">
                 <a-box depth="1" width="4" height="2" position="0 0.25 0" color="blue"></a-box>
                 <a-box depth="1" width="4.5" height="0.4" position="0.25 -1 -0.25" color="grey"></a-box>
@@ -142,44 +248,119 @@
                         <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
                     </a-cylinder>
                 </a-entity>
+                <a-entity id="truckCab" position="2.8 0 0">
+                    <a-box depth="1" width="1" height="2" position="0 0.25 0" color="grey"></a-box>
+                    <a-box depth="1" width="0.5" height="1.5" position="0.75 0 0" color="grey"></a-box>
+                    <a-box depth="0.8" width="0.1" height="0.8" position="1 0 0" color="black"></a-box>
+                    <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="-0.2 -0.8 0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                    <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="0.6 -0.8 0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                    <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="-0.2 -0.8 -0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                    <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="0.6 -0.8 -0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                </a-entity>
             </a-entity>
-
-            <a-entity id="truckCab" position="2.8 0 0">
-                <a-box depth="1" width="1" height="2" position="0 0.25 0" color="grey"></a-box>
-                <a-box depth="1" width="0.5" height="1.5" position="0.75 0 0" color="grey"></a-box>
-                <a-box depth="0.8" width="0.1" height="0.8" position="1 0 0" color="black"></a-box>
-                <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="-0.2 -0.8 0.5" color="black">
-                    <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
-                </a-cylinder>
-                <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="0.6 -0.8 0.5" color="black">
-                    <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
-                </a-cylinder>
-                <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="-0.2 -0.8 -0.5" color="black">
-                    <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
-                </a-cylinder>
-                <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="0.6 -0.8 -0.5" color="black">
-                    <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
-                </a-cylinder>
-            </a-entity>
-
         </a-entity>
-        <a-entity id="car" position="0 0 0" visible="false">
-            <a-box depth="1.5" width="2" height="2" position="0 0.5 0" color="grey"></a-box>
-            <a-box depth="1.5" width="1" height="1" position="1.5 0 0" color="grey"></a-box>
-            <a-box depth="1.5" width="1" height="1" position="-1.5 0 0" color="grey"></a-box>
 
-            <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="-1 -0.5 0.75" color="black">
-                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
-            </a-cylinder>
-            <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="1 -0.5 0.75" color="black">
-                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
-            </a-cylinder>
-            <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="-1 -0.5 -0.75" color="black">
-                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
-            </a-cylinder>
-            <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="1 -0.5 -0.75" color="black">
-                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
-            </a-cylinder>
+        <a-entity id="hgvB" class="Models">
+            <a-entity id="truckLoad" position="0 0.5 0">
+                <a-box depth="1" width="4" height="2" position="0 0.25 0" color="blue"></a-box>
+                <a-box depth="1" width="4.5" height="0.4" position="0.25 -1 -0.25" color="grey"></a-box>
+                <a-cylinder radius="0.1" height="0.5" rotation="0 0 90" position="2.2 -0.2 0.2" color="grey"></a-cylinder>
+                <a-cylinder radius="0.1" height="0.5" rotation="0 0 90" position="2.2 -0.2 -0.2" color="grey"></a-cylinder>
+
+                <a-entity id="loadWheels" position="-1.4 -1.25 0">
+                    <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="0 0 0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                    <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="0.6 0 0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                    <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="1.2 -0 0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+
+                    <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="0 -0 -0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                    <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="0.6 0 -0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                    <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="1.2 0 -0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                </a-entity>
+                <a-entity id="truckCab" position="2.8 0 0">
+                    <a-box depth="1" width="1" height="2" position="0 0.25 0" color="grey"></a-box>
+                    <a-box depth="1" width="0.5" height="1.5" position="0.75 0 0" color="grey"></a-box>
+                    <a-box depth="0.8" width="0.1" height="0.8" position="1 0 0" color="black"></a-box>
+                    <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="-0.2 -0.8 0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                    <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="0.6 -0.8 0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                    <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="-0.2 -0.8 -0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                    <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="0.6 -0.8 -0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                </a-entity>
+            </a-entity>
+        </a-entity>
+        <a-entity id="hgvC" class="Models">
+            <a-entity id="truckLoad" position="0 0.5 0">
+                <a-box depth="1" width="4" height="2" position="0 0.25 0" color="blue"></a-box>
+                <a-box depth="1" width="4.5" height="0.4" position="0.25 -1 -0.25" color="grey"></a-box>
+                <a-cylinder radius="0.1" height="0.5" rotation="0 0 90" position="2.2 -0.2 0.2" color="grey"></a-cylinder>
+                <a-cylinder radius="0.1" height="0.5" rotation="0 0 90" position="2.2 -0.2 -0.2" color="grey"></a-cylinder>
+
+                <a-entity id="loadWheels" position="-1.4 -1.25 0">
+                    <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="0 0 0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                    <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="0.6 0 0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                    <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="1.2 -0 0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+
+                    <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="0 -0 -0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                    <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="0.6 0 -0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                    <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="1.2 0 -0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                </a-entity>
+                <a-entity id="truckCab" position="2.8 0 0">
+                    <a-box depth="1" width="1" height="2" position="0 0.25 0" color="grey"></a-box>
+                    <a-box depth="1" width="0.5" height="1.5" position="0.75 0 0" color="grey"></a-box>
+                    <a-box depth="0.8" width="0.1" height="0.8" position="1 0 0" color="black"></a-box>
+                    <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="-0.2 -0.8 0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                    <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="0.6 -0.8 0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                    <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="-0.2 -0.8 -0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                    <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="0.6 -0.8 -0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                </a-entity>
+            </a-entity>
         </a-entity>
         <!--a-text value="Cars" position="-9 2 -4.8" rotation="0 90 0" color="black" align="center" class="carBar"></!-a-text>
         <a-text value="LCVs" position="-9 2 -3.8" rotation="0 90 0" color="black" align="center" class="lcvBar"></a-text>
@@ -192,6 +373,7 @@
     </a-scene>
 
     <script>
+
         // default alpha for bars
         var alpha = 0.8
         var rowSetting = 3
@@ -236,19 +418,97 @@
             loadedData = dataToUse
         }
         // we use d3's enter/update/exit pattern to draw and bind our dom elements
-        var lcvModelA = scene.selectAll('#lcvModel')
-        var lcvModelB = scene.selectAll('#lcvModel')
+        var lcvModel = scene.select('a-entity.lcvModels')
+        var carModel = scene.select('a-entity.carModels')
+        var hgvModel = scene.select('a-entity.hgvModels')
 
-        lcvModelA.attr({
-            'position': '-10 0 6',
-            'rotation': '0 90 0',
-            'visbile': 'true'
-        })
-        lcvModelB.attr({
-            'position': '-10 0 4',
-            'rotation': '0 90 0',
-            'visbile': 'true'
-        })
+        var carA = scene.select('a-entity#carA').data('88.1')
+        var carB = scene.select('a-entity#carB').data('102.2')
+        var carC = scene.select('a-entity#carC').data('97.9')
+
+        var hgvA = scene.select('a-entity#hgvA').data('6.3')
+        var hgvB = scene.select('a-entity#hgvB').data('6.9')
+        var hgvC = scene.select('a-entity#hgvC').data('6.6')
+
+        var lcvA = scene.select('a-entity#lcvA').data('18.6')
+        var lcvB = scene.select('a-entity#lcvB').data('20.5')
+        var lcvC = scene.select('a-entity#lcvC').data('19.5')
+
+        function showCarRun() {
+            d3.selectAll('a-entity.models').attr({ visible: 'false' })
+            carA.attr({
+                visible: 'true',
+                position: "-1 1 10",
+                rotation: "0 90 0",
+                scale: "0.2 0.2 0.2",
+                animation: "property: position; to: -1 1 14.4;from:-1 1 10; loop: false; dur: 10000; delay: 1000"
+            })
+            carB.attr({
+                visible: 'true',
+                position: "-1 2 10",
+                rotation: "0 90 0",
+                scale: "0.2 0.2 0.2",
+                animation: "property: position; to: -1 2 15.1;from:-1 2 10; loop: false; dur: 10000; delay: 1000"
+            })
+            carC.attr({
+                visible: 'true',
+                position: "-1 3 10",
+                rotation: "0 90 0",
+                scale: "0.2 0.2 0.2",
+                animation: "property: position; to: -1 3 14.9;from:-1 3 10; loop: false; dur: 10000; delay: 1000"
+            })
+        }
+        function showLCVRun() {
+            d3.selectAll('a-entity.models').attr({ visible: 'false' })
+
+            lcvA.attr({
+                visible: 'true',
+                position: "-1 1 10",
+                rotation: "0 -90 0",
+                scale: "0.2 0.2 0.2",
+                animation: "property: position; to: -1 1 16.3;from:-1 1 10; loop: false; dur: 10000; delay: 1000"
+            })
+            lcvB.attr({
+                visible: 'true',
+                position: "-1 2 10",
+                rotation: "0 -90 0",
+                scale: "0.2 0.2 0.2",
+                animation: "property: position; to: -1 2 20.25;from:-1 2 10; loop: false; dur: 10000; delay: 1000"
+            })
+            lcvC.attr({
+                visible: 'true',
+                position: "-1 3 10",
+                rotation: "0 -90 0",
+                scale: "0.2 0.2 0.2",
+                animation: "property: position; to: -1 3 17.75;from:-1 3 10; loop: false; dur: 10000; delay: 1000"
+            })
+        }
+        function showHGVRun() {
+            d3.selectAll('a-entity.models').attr({ visible: 'false' })
+            hgvA.attr({
+                visible: 'true',
+                position: "-1 1 10",
+                rotation: "0 -90 0",
+                scale: "0.2 0.2 0.2",
+                animation: "property: position; to: -1 1 16.3; from:-1 1 10;loop: false; dur: 10000; delay: 1000"
+            })
+            hgvB.attr({
+                visible: 'true',
+                position: "-1 2 10",
+                rotation: "0 -90 0",
+                scale: "0.2 0.2 0.2",
+                animation: "property: position; to: -1 2 16.9;from:-1 2 10; loop: false; dur: 10000; delay: 1000"
+            })
+            hgvC.attr({
+                visible: 'true',
+                position: "-1 3 10",
+                rotation: "0 -90 0",
+                scale: "0.2 0.2 0.2",
+                animation: "property: position; to: -1 3 16.6;from:-1 3 10; loop: false; dur: 10000; delay: 1000"
+            })
+        }
+
+
 
         var carLabel = scene.selectAll("a-text.veichleType").data("Cars")
         var lcvLabel = scene.selectAll("a-text.veichleType").data("LCVs")
@@ -364,11 +624,11 @@
                         "color": "green"
                     })
             })
-        var controlF = d3.select("#controlF")
+        var controlG = d3.select("#controlG")
             .on("click", function () {
-                console.log("Shifting Graph to Vis Rep Amount Based")
+                console.log("Running Cars")
 
-                d3.selectAll(".controlsMain")
+                d3.selectAll(".controlsAdv")
                     .attr({
                         "color": "grey"
                     })
@@ -376,6 +636,35 @@
                     .attr({
                         "color": "green"
                     })
+                showCarRun()
+            })
+        var controlH = d3.select("#controlH")
+            .on("click", function () {
+                console.log("Running LCVs")
+
+                d3.selectAll(".controlsAdv")
+                    .attr({
+                        "color": "grey"
+                    })
+                d3.select(this)
+                    .attr({
+                        "color": "green"
+                    })
+                showLCVRun()
+            })
+        var controlI = d3.select("#controlI")
+            .on("click", function () {
+                console.log("Running HGVs")
+
+                d3.selectAll(".controlsAdv")
+                    .attr({
+                        "color": "grey"
+                    })
+                d3.select(this)
+                    .attr({
+                        "color": "green"
+                    })
+                showHGVRun()
             })
 
 
@@ -429,11 +718,11 @@
             })
             sidePanel.enter().append("a-plane")
             sidePanel.attr({
-                position: -1 + " " + 2 + " " + 5,
+                position: -1 + " " + 2 + " " + 12,
                 rotation: "0 90 0",
-                width: 6,
+                width: 26,
                 height: 6,
-                id: "#backPanel"
+                id: "#sidePanel"
             })
 
             var quarterIDs = scene.selectAll("a-text.quarterText").data(quarters)
