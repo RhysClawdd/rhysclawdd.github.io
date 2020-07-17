@@ -362,10 +362,12 @@
                 </a-entity>
             </a-entity>
         </a-entity>
-        <!--a-text value="Cars" position="-9 2 -4.8" rotation="0 90 0" color="black" align="center" class="carBar"></!-a-text>
-        <a-text value="LCVs" position="-9 2 -3.8" rotation="0 90 0" color="black" align="center" class="lcvBar"></a-text>
-        <a-text value="HGVs" position="-9 2 -2.8" rotation="0 90 0" color="black" align="center" class="hgvBar"></a-text>
-        <a-text value="Other" position="-9 2 -1.8" rotation="0 90 0" color="black" align="center" class="otherBar"></a-text-->
+        <a-text value="Q1-20" position="0 3 10" rotation="0 90 0" color="black" align="center"></a-text>
+        <a-text value="Q4-19s" position="0 2 10" rotation="0 90 0" color="black" align="center"></a-text>
+        <a-text value="Q1-15" position="0 1 10" rotation="0 90 0" color="black" align="center"></a-text>
+
+
+
 
         <a-entity light="type: point; color: 'white'; intensity: 0.5" position="20 40 20"></a-entity>
         <a-entity light="type: point; color: 'white'; intensity: 0.5" position="-20 40 20"></a-entity>
@@ -802,7 +804,6 @@
         function createAdvVis(modelID) {
 
         }
-
         function cameraLeft() {
             var camera = document.querySelector('#cameraRig').object3D
             camera.object3D.position.x += 1
@@ -820,7 +821,6 @@
 
         }
     </script>
-
     <script>
 
         $(".bar").each(function () {
