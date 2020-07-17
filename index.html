@@ -22,7 +22,7 @@
 
 
         </a-assets>
-        <a-entity position="8 2 8" rotation="0 0 0">
+        <a-entity position="8 2 8" rotation="1 0 0" id="cameraRig">
             <a-entity camera look-controls wasd-controls>
                 <a-entity cursor="fuse: true; fuseTimeout: 500"
                           position="0 0 -2"
@@ -46,6 +46,7 @@
                   geo-outline-renderer="color: red;">
         </a-entity>
             -->
+        <!-- Row Setting Controls-->
         <a-entity position="8 2 8">
             <a-box position="0 -1.25 -1" depth="0.5" width="0.5" height="0.5" id="controlA" class="controlsSub">
                 <a-text position="1 0 0.1" value="Car" color="black" align="center"></a-text>
@@ -63,6 +64,7 @@
                 <a-text position="1 0 0.1" value="Other" color="black" align="center"></a-text>
             </a-box>
 
+            <!-- Main Graph Switch Controls-->
             <a-box position="2 0.25 -1" depth="0.5" width="0.5" height="0.5" id="controlE" class="controlsMain">
                 <a-text position="1 0 0.1" value="Percentage" color="black" align="center"></a-text>
             </a-box>
@@ -70,9 +72,115 @@
                 <a-text position="1 0 0.1" value="Raw" color="black" align="center"></a-text>
             </a-box>
 
+            <!-- Enhanced Visual Controls-->
+            <a-entity rotation="0 90 0" position="-8 -2 5">
+                <a-box position="0 0 0" depth="0.5" width="0.5" height="0.5" id="controlG" class="controlsAdv">
+                    <a-text position="0 1 0" value="Car" color="black" align="center"></a-text>
+                </a-box>
+
+                <a-box position="0.75 0 0" depth="0.5" width="0.5" height="0.5" id="controlH" class="controlsAdv">
+                    <a-text position="0 1 0" value="LCV" color="black" align="center"></a-text>
+                </a-box>
+                <a-box position="1.5 0 0" depth="0.5" width="0.5" height="0.5" id="controlI" class="controlsAdv">
+                    <a-text position="0 1 0" value="HGV" color="black" align="center"></a-text>
+                </a-box>
+                <a-box position="2.25 0 0" depth="0.5" width="0.5" height="0.5" id="controlJ" class="controlsAdv">
+                    <a-text position="0 1 0" value="Other" color="black" align="center"></a-text>
+                </a-box>
+                <a-box position="3 0 0" depth="0.5" width="0.5" height="0.5" id="controlK" class="controlsAdv">
+                    <a-text position="0 1 0" value="Run" color="black" align="center"></a-text>
+                </a-box>
+            </a-entity>
+
+
             <a-box position="1.8 0 -1" rotation="-1 0 0" depth="0.1" width="5" height="3" id="controlBackPlate" class="controlsFoundation" color="white"></a-box>
         </a-entity>
 
+        <a-entity id="lcv" position="0 0 0" visible="true">
+            <a-box depth="1.75" width="2.5" height="1.5" position="-0.25 0.75 0" color="blue"></a-box>
+            <a-box depth="1.5" width="2.5" height="0.5" position="-0.25 -0.25 0" color="grey"></a-box>
+            <a-box depth="1.5" width="1" height="1.5" position="1.5 0.25 0" color="grey"></a-box>
+
+            <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="-1 -0.5 0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="1 -0.5 0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="-1 -0.5 -0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="1 -0.5 -0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+        </a-entity>
+        <a-entity id="hgv" visible="false">
+            <a-entity id="truckLoad" position="0 0.5 0">
+                <a-box depth="1" width="4" height="2" position="0 0.25 0" color="blue"></a-box>
+                <a-box depth="1" width="4.5" height="0.4" position="0.25 -1 -0.25" color="grey"></a-box>
+                <a-cylinder radius="0.1" height="0.5" rotation="0 0 90" position="2.2 -0.2 0.2" color="grey"></a-cylinder>
+                <a-cylinder radius="0.1" height="0.5" rotation="0 0 90" position="2.2 -0.2 -0.2" color="grey"></a-cylinder>
+
+                <a-entity id="loadWheels" position="-1.4 -1.25 0">
+                    <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="0 0 0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                    <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="0.6 0 0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                    <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="1.2 -0 0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+
+                    <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="0 -0 -0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                    <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="0.6 0 -0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                    <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="1.2 0 -0.5" color="black">
+                        <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                    </a-cylinder>
+                </a-entity>
+            </a-entity>
+
+            <a-entity id="truckCab" position="2.8 0 0">
+                <a-box depth="1" width="1" height="2" position="0 0.25 0" color="grey"></a-box>
+                <a-box depth="1" width="0.5" height="1.5" position="0.75 0 0" color="grey"></a-box>
+                <a-box depth="0.8" width="0.1" height="0.8" position="1 0 0" color="black"></a-box>
+                <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="-0.2 -0.8 0.5" color="black">
+                    <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                </a-cylinder>
+                <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="0.6 -0.8 0.5" color="black">
+                    <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                </a-cylinder>
+                <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="-0.2 -0.8 -0.5" color="black">
+                    <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                </a-cylinder>
+                <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="0.6 -0.8 -0.5" color="black">
+                    <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+                </a-cylinder>
+            </a-entity>
+
+        </a-entity>
+        <a-entity id="car" position="0 0 0" visible="false">
+            <a-box depth="1.5" width="2" height="2" position="0 0.5 0" color="grey"></a-box>
+            <a-box depth="1.5" width="1" height="1" position="1.5 0 0" color="grey"></a-box>
+            <a-box depth="1.5" width="1" height="1" position="-1.5 0 0" color="grey"></a-box>
+
+            <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="-1 -0.5 0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="90 0 0" position="1 -0.5 0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="-1 -0.5 -0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+            <a-cylinder radius="0.3" height="0.2" rotation="-90 0 0" position="1 -0.5 -0.75" color="black">
+                <a-cylinder radius="0.2" height="0.2" position="0 0.01 0" color="grey"></a-cylinder>
+            </a-cylinder>
+        </a-entity>
         <!--a-text value="Cars" position="-9 2 -4.8" rotation="0 90 0" color="black" align="center" class="carBar"></!-a-text>
         <a-text value="LCVs" position="-9 2 -3.8" rotation="0 90 0" color="black" align="center" class="lcvBar"></a-text>
         <a-text value="HGVs" position="-9 2 -2.8" rotation="0 90 0" color="black" align="center" class="hgvBar"></a-text>
@@ -113,7 +221,6 @@
         ]
         var quarters = ['Q1-18', 'Q2-18', 'Q3-18', 'Q4-18', 'Q1-19', 'Q2-19', 'Q3-19', 'Q4-19', 'Q1-20']
 
-
         // we scale the height of our bars using d3's linear scale
         var hscale = d3.scale.linear()
             .domain([0, d3.max(trafficData[3])])
@@ -129,6 +236,19 @@
             loadedData = dataToUse
         }
         // we use d3's enter/update/exit pattern to draw and bind our dom elements
+        var lcvModelA = scene.selectAll('#lcvModel')
+        var lcvModelB = scene.selectAll('#lcvModel')
+
+        lcvModelA.attr({
+            'position': '-10 0 6',
+            'rotation': '0 90 0',
+            'visbile': 'true'
+        })
+        lcvModelB.attr({
+            'position': '-10 0 4',
+            'rotation': '0 90 0',
+            'visbile': 'true'
+        })
 
         var carLabel = scene.selectAll("a-text.veichleType").data("Cars")
         var lcvLabel = scene.selectAll("a-text.veichleType").data("LCVs")
@@ -244,6 +364,21 @@
                         "color": "green"
                     })
             })
+        var controlF = d3.select("#controlF")
+            .on("click", function () {
+                console.log("Shifting Graph to Vis Rep Amount Based")
+
+                d3.selectAll(".controlsMain")
+                    .attr({
+                        "color": "grey"
+                    })
+                d3.select(this)
+                    .attr({
+                        "color": "green"
+                    })
+            })
+
+
         function fixed(x) {
             return Number.parseFloat(x).toFixed(2);
         }
@@ -316,9 +451,6 @@
             })
         }
 
-
-
-
         function createRow(bar, depth, barString) {
             bar.enter().append("a-box").classed(barString, true)
             $("." + barString).append("<a-text class=\"data\"> </a-text>");
@@ -378,7 +510,24 @@
                         })
                 })
         }
-        function setColor() {
+        function createAdvVis(modelID) {
+
+        }
+
+        function cameraLeft() {
+            var camera = document.querySelector('#cameraRig').object3D
+            camera.object3D.position.x += 1
+        }
+        function cameraUp() {
+            console.log(document.querySelector('#cameraRig').object3D)
+
+        }
+        function cameraDown() {
+            cameraRig.position.z += -1
+
+        }
+        function cameraRight() {
+            cameraRig.position.x += 1
 
         }
     </script>
@@ -397,6 +546,13 @@
         <a href="https://rhysclawdd.github.io/LCVModel.html"><button>LCV Model</button></a>
         <a href="https://rhysclawdd.github.io/HGVModel.html"><button>HGV Model</button></a>
         <a href="https://rhysclawdd.github.io"><button>Home</button></a>
+        <a href="https://rhysclawdd.github.io"><button>Home</button></a>
+    </div>
+    <div style='position: fixed; bottom: 10px; width:100%; text-align: left; z-index: 1;'>
+        <button onclick="cameraLeft()"><</button>
+        <button onclick="cameraUp()">^</button>
+        <button onclick="cameraDown()">v</button>
+        <button onclick="cameraRight()">></button>
     </div>
 </body>
 </html>
