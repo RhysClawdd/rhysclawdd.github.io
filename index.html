@@ -11,16 +11,8 @@
 </head>
 <body>
     <a-scene background="#112211">
-        <a-assets timeout="10000">
-            <a-asset-item id="json-world" src="https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_land.geojson" />
-            <a-asset-item id="json-uk" src="https://rhysclawdd.github.io/GeoJSON/NHSEngland.geojson" />
-            <a-asset-item id="truck" src="https://rhysclawdd.github.io/Models/truck.glb" />
-            <a-asset-item id="car" src="https://rhysclawdd.github.io/Models/Car/car.gltf"></a-asset-item>
-            <a-asset-item id="carScene" src="https://rhysclawdd.github.io/Models/Car/car.bin"></a-asset-item>
-            <a-asset-item id="carTextureA" src="https://rhysclawdd.github.io/Models/Car/textures/Abarth_Logo_baseColor.png"></a-asset-item>
-            <a-asset-item id="carTextureB" src="https://rhysclawdd.github.io/Models/Car/textures/Car_Paint_baseColor.png"></a-asset-item>
-
-
+        <a-assets timeout="1000">
+            <img id="sky" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
         </a-assets>
         <a-entity position="5 2 10" rotation="1 0 0" id="cameraRig">
             <a-entity camera look-controls wasd-controls>
@@ -386,7 +378,7 @@
 
         <a-entity light="type: point; color: 'white'; intensity: 0.8" position="20 40 -20"></a-entity>
         <a-entity light="type: point; color: 'white'; intensity: 0.8" position="-20 40 20"></a-entity>
-        <a-sky color="#112211"></a-sky>
+        <a-sky src="#sky"></a-sky>
     </a-scene>
 
     <script>
