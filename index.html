@@ -7,7 +7,7 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
     <script src="https://unpkg.com/aframe-geo-projection-component/dist/aframe-geo-projection-component.min.js"></script>
-
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
 </head>
 <body>
     <a-scene background="#112211">
@@ -15,9 +15,9 @@
             <img id="sky" src="https://rhysclawdd.github.io/nightSky.jpg">
             <img id="sechelt" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
             <img id="sky2" src="https://rhysclawdd.github.io/sechelt.jpg">
-
-
         </a-assets>
+        <a-entity environment="preset: egypt"></a-entity>
+
         <a-entity position="5 2 10" rotation="1 0 0" id="cameraRig">
             <a-entity camera look-controls wasd-controls>
                 <a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
