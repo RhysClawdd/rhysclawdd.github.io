@@ -567,7 +567,7 @@
             labelID.attr({
                 color: '#ffcccc',
                 align: 'center',
-                position: '-1 4 ' + z,
+                position: '-0.9 4 ' + z,
                 rotation: '0 90 0',
                 value: labelText
             })
@@ -779,7 +779,7 @@
                 position: function (d, i) {
                     var x = i * 0.75
                     var y = 4;
-                    var z = maxDepth
+                    var z = maxDepth + 0.1
                     return x + " " + y + " " + z
                 },
                 value: function (d) { return d }
