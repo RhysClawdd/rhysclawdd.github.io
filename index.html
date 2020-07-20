@@ -31,7 +31,6 @@
         </a-entity>
 
         <a-entity rotation="0 -60 0" position="8 2 6">
-            <a-box position="1.8 0 -1" rotation="-1 0 0" depth="0.1" width="5" height="3" id="controlBackPlate" class="controlsFoundation" color="white"></a-box>
             <!-- Row Setting Controls-->
             <a-box position="0 -1.25 -1" depth="0.5" width="0.5" height="0.5" id="controlA" class="controlsSub" color="green">
                 <a-text position="1 0 0.1" value="Car" color="black" align="center"></a-text>
@@ -553,8 +552,7 @@
         var lcvLabel = scene.selectAll("a-text.veichleType").data("LCVs")
         var hgvLabel = scene.selectAll("a-text.veichleType").data("HGVs")
         var otherLabel = scene.selectAll("a-text.veichleType").data("Other")
-        var backPanel = scene.selectAll("a-plane#backPanel").data("backPanel")
-        var sidePanel = scene.selectAll("a-panel#sidePanel").data("sidePanel")
+
 
         createGraph(rowSetting)
 
@@ -720,7 +718,6 @@
             lcvLabel.remove()
             hgvLabel.remove()
             otherLabel.remove()
-            backPanel.remove()
         }
         function createGraph() {
 
@@ -747,25 +744,6 @@
                 createRow(carBar, 3, "carBar")
                 createLabel(carLabel, "Cars", 3)
             }
-
-            backPanel.enter().append("a-plane")
-            backPanel.attr({
-                position: 3 + " " + 2 + " " + maxDepth,
-                width: 8,
-                height: 6,
-                color: '#FFFFFF',
-                id: "#backPanel"
-
-            })
-            sidePanel.enter().append("a-plane")
-            sidePanel.attr({
-                position: -1 + " " + 2 + " " + 12,
-                rotation: "0 90 0",
-                width: 26,
-                height: 6,
-                color: '#FFFFFF',
-                id: "#sidePanel"
-            })
 
             var quarterIDs = scene.selectAll("a-text.quarterText").data(quarters)
             quarterIDs.enter().append("a-text").classed("quarterText", true)
