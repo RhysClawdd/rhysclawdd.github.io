@@ -25,12 +25,12 @@
         }
 
         .sidebar {
-            padding: 8px 8px 8px 32px;
+            padding: 8px 8px 8px 0px;
             text-decoration: none;
             font-size: 20px;
             color: #818181;
             display: block;
-            transition: 0.3s;
+            transition: 0.5s;
         }
 
             .sidebar a:hover {
@@ -42,7 +42,6 @@
                 top: 0;
                 right: 25px;
                 font-size: 36px;
-                margin-left: 50px;
             }
 
         .openbtn {
@@ -129,12 +128,13 @@
         }
         function openNav() {
             document.getElementById("mySidebar").style.width = "33%";
-            document.getElementById("main").style.marginLeft = "33%";
+            document.getElementById("mySidebar").style.paddingLeft = "32px";
+
 
         }
         function closeNav() {
-            document.getElementById("mySidebar").style.width = "0%";
-            document.getElementById("main").style.marginLeft = "0%";
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("mySidebar").style.paddingLeft = "0";
         }
     </script>
     <script>
@@ -144,21 +144,21 @@
                 loadDeanStreetA()
                 openNav()
             })
-            .on("mouseenter", function (d, i) {
+            .on("mouseenter", function () {
                 // this event gets fired continuously as long as the cursor
                 // is over the element. we only want trigger our animation the first time
                 if (this.hovering) return
-                console.log("hover", i, d)
+                console.log("hover")
                 this.hovering = true;
-                d3.select(this).transition().duration(10)
+                d3.select(this).select("a-box").transition().duration(10)
                     .attr({
                         color: 'orange'
                     })
             })
-            .on("mouseleave", function (d, i) {
-                console.log("leave", i, d)
+            .on("mouseleave", function () {
+                console.log("leave")
                 this.hovering = false;
-                d3.select(this).transition().duration(500)
+                d3.select(this).select("a-box").transition().duration(500)
                     .attr({
                         color: 'cyan'
                     })
