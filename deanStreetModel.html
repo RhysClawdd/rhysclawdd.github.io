@@ -108,7 +108,7 @@
     <div id="mySidebar" class="sidebar">
         <button class="openbtn" onclick="closeNav()">CLOSE</button>
         <h1>Dean Street</h1>
-        <h2 id="subtype">SCHOOL OF COMPUTER SCIENCE AND ELECTRONIC ENGINEERING</h2>
+        <h2 id="subType">If you're reading this an error has occured</h2>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at neque eros. Ut varius, dolor id ultrices varius, leo lorem fringilla dui, ac tristique orci magna id odio.<br>
             Nunc dolor urna, convallis sit amet augue eget, tristique elementum ipsum. In ullamcorper mollis leo, nec vulputate nisl posuere eget. Nulla rhoncus ut massa ac tincidunt.<br>
@@ -123,15 +123,13 @@
     </div>
 
     <script>
-       /* var deanStreetA = "SCHOOL OF COMPUTER SCIENCE AND ELECTRONIC ENGINEERING"
-        var deanStreetB = "Lifelong Learning"
         var x = document.getElementById("subType");
         function loadDeanStreetA() {
             x.innerHTML = "School Of Computer Science And Electronic Engineering";
         }
         function loadDeanStreetB() {
             x.innerHTML = "Lifelong Learning";
-        }*/
+        }
         function openNav() {
             document.getElementById("mySidebar").style.width = "33%";
             document.getElementById("main").style.marginLeft = "33%";
@@ -146,13 +144,13 @@
         var controlCSEE = d3.select("#csee")
             .on("click", function () {
                 console.log("Displaying CSEE")
-                //loadDeanStreetA()
+                loadDeanStreetA()
                 openNav()
             })
         var controlLifeLearning = d3.select("#lifelongLearning")
             .on("click", function () {
                 console.log("Displaying Lifelong Learning")
-                //loadDeanStreetB()
+                loadDeanStreetB()
                 openNav()
             })
     </script>
