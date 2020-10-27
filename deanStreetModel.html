@@ -109,26 +109,23 @@
         <button class="openbtn" onclick="closeNav()">CLOSE</button>
         <h1>Dean Street</h1>
         <h2 id="subType">If you're reading this an error has occured</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at neque eros. Ut varius, dolor id ultrices varius, leo lorem fringilla dui, ac tristique orci magna id odio.<br>
-            Nunc dolor urna, convallis sit amet augue eget, tristique elementum ipsum. In ullamcorper mollis leo, nec vulputate nisl posuere eget. Nulla rhoncus ut massa ac tincidunt.<br>
-            Maecenas mattis diam vitae auctor pulvinar. Curabitur vitae porta felis. Duis at neque lectus. Nam aliquam magna eu nisl tempor, id ultrices risus egestas.<br>
-            Suspendisse erat est, eleifend eget sapien non, interdum euismod magna. Praesent mattis convallis ligula, eget rhoncus nisi venenatis eget.<br>
-
-            Mauris tincidunt scelerisque dapibus. Vestibulum bibendum tortor vitae nisl semper hendrerit.<br>
-            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.<br>
-            Vivamus eu lectus scelerisque, dapibus nisl vel, egestas diam. Mauris ut iaculis est, et euismod ante. Sed ac lectus tortor.<br>
-            Donec fermentum congue metus. Proin elementum leo at enim feugiat bibendum.<br>
+        <p id="subTypeDesc">
+            This Error has occured most likely due to a failure to swap the innerHTML of this section with the intended description
         </p>
     </div>
 
     <script>
         var x = document.getElementById("subType");
+        var y = document.getElementById("subTypeDesc");
+
         function loadDeanStreetA() {
             x.innerHTML = "School Of Computer Science And Electronic Engineering";
+            y.innerHTML = "Clearly the best school of all of bangor university";
         }
         function loadDeanStreetB() {
-            x.innerHTML = "Lifelong Learning";
+            x.innerHTML = "Welsh For Adults Center";
+            y.innerHTML = "Some offices used as an excuse to give CSEE a 2nd lecture hall";
+
         }
         function openNav() {
             document.getElementById("mySidebar").style.width = "33%";
@@ -147,6 +144,27 @@
                 loadDeanStreetA()
                 openNav()
             })
+            .on("mouseenter", function (d, i) {
+                // this event gets fired continuously as long as the cursor
+                // is over the element. we only want trigger our animation the first time
+                if (this.hovering) return
+                console.log("hover", i, d)
+                this.hovering = true;
+                d3.select(this).transition().duration(10)
+                    .attr({
+                        color: 'orange'
+                    })
+            })
+            .on("mouseleave", function (d, i) {
+                console.log("leave", i, d)
+                this.hovering = false;
+                d3.select(this).transition().duration(500)
+                    .attr({
+                        color: 'cyan'
+                    })
+            })
+
+
         var controlLifeLearning = d3.select("#lifelongLearning")
             .on("click", function () {
                 console.log("Displaying Lifelong Learning")
