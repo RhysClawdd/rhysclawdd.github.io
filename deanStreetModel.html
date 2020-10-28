@@ -4,6 +4,8 @@
 <head>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script> <!--On hover interactions-->
+
     <meta charset="utf-8" />
     <title>Dean Street Model</title>
     <style>
@@ -145,22 +147,18 @@
                 openNav()
             })
             .on("mouseenter", function () {
-                // this event gets fired continuously as long as the cursor
-                // is over the element. we only want trigger our animation the first time
                 if (this.hovering) return
-                console.log("hover")
                 this.hovering = true;
-                d3.select(this).select("a-box").transition().duration(10)
+                d3.select(this).selectAll("a-box").transition().duration(500)
                     .attr({
-                        color: 'orange'
+                        "color": "green"
                     })
             })
             .on("mouseleave", function () {
-                console.log("leave")
                 this.hovering = false;
-                d3.select(this).select("a-box").transition().duration(500)
+                d3.select(this).selectAll("a-box").transition().duration(500)
                     .attr({
-                        color: 'cyan'
+                        "color": 'grey'
                     })
             })
 
@@ -170,6 +168,21 @@
                 console.log("Displaying Lifelong Learning")
                 loadDeanStreetB()
                 openNav()
+            })
+            .on("mouseenter", function () {
+                if (this.hovering) return
+                this.hovering = true;
+                d3.select(this).selectAll("a-box").transition().duration(500)
+                    .attr({
+                        "color": "green"
+                    })
+            })
+            .on("mouseleave", function () {
+                this.hovering = false;
+                d3.select(this).selectAll("a-box").transition().duration(500)
+                    .attr({
+                        "color": 'grey'
+                    })
             })
     </script>
 </body>
