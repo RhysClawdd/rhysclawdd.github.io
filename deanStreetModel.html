@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script> <!--On hover interactions-->
+
+    <meta charset="utf-8" />
+    <title>Dean Street Model</title>
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #e6e6e6;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidebar {
+            padding: 8px 8px 8px 0px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #818181;
+            display: block;
+            transition: 0.5s;
+        }
+
+            .sidebar a:hover {
+                color: #f1f1f1;
+            }
+
+            .sidebar .closebtn {
+                position: absolute;
+                top: 0;
+                right: 25px;
+                font-size: 36px;
+            }
+
+        .openbtn {
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #111;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+        }
+
+            .openbtn:hover {
+                background-color: #444;
+            }
+
+        #main {
+            transition: margin-left .5s;
+            padding: 16px;
+        }
+
+        /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+        @media screen and (max-height: 450px) {
+            .sidebar {
+                padding-top: 15px;
+            }
+
+                .sidebar a {
+                    font-size: 18px;
+                }
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Click on Dean Street</h1>
+    </div>
+    <a-scene>
+        <a-entity position="4 8 8" rotation="0 0 0">
+            <a-entity camera look-controls wasd-controls>
+                <a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
+                          animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1"
+                          animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
+                          cursor="fuse: true;"
+                          material="color: black; shader: flat"
+                          position="0 0 -3"
+                          geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.027"></a-entity>
+            </a-entity>
+        </a-entity>
+        <a-entity id="csee" position="0 0 0" scale="0.5">
+            <a-box depth="2" width="14" height="4" position="0 2 0" color="grey"></a-box>
+            <a-box depth="2" width="20" height="4" position="-5 2 2" color="grey"></a-box>
+        </a-entity>
+        <a-entity id="lifelongLearning" position="-6 0 7" scale="0.5">
+            <a-box depth="3" width="10" height="3.5" position="0 1.75 0" color="grey"></a-box>
+            <a-box depth="3" width="2" height="1" position="3 2 -3" color="grey"></a-box>
+
+        </a-entity>
+    </a-scene>
+    <div>
+        <h1>Click on Dean Street</h1>
+    </div>
+    <div id="mySidebar" class="sidebar">
+        <button class="openbtn" onclick="closeNav()">CLOSE</button>
+        <h1>Dean Street</h1>
+        <h2 id="subType">If you're reading this an error has occured</h2>
+        <p id="subTypeDesc">
+            This Error has occured most likely due to a failure to swap the innerHTML of this section with the intended description
+        </p>
+    </div>
+
+    <script>
+        var x = document.getElementById("subType");
+        var y = document.getElementById("subTypeDesc");
+
+        function loadDeanStreetA() {
+            x.innerHTML = "School Of Computer Science And Electronic Engineering";
+            y.innerHTML = "Clearly the best school of all of bangor university";
+        }
+        function loadDeanStreetB() {
+            x.innerHTML = "Welsh For Adults Center";
+            y.innerHTML = "Some offices used as an excuse to give CSEE a 2nd lecture hall";
+
+        }
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "33%";
+            document.getElementById("mySidebar").style.paddingLeft = "32px";
+
+
+        }
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("mySidebar").style.paddingLeft = "0";
+        }
+    </script>
+    <script>
+        var controlCSEE = d3.select("#csee")
+            .on("click", function () {
+                console.log("Displaying CSEE")
+                loadDeanStreetA()
+                openNav()
+            })
+            .on("mouseenter", function () {
+                if (this.hovering) return
+                this.hovering = true;
+                d3.select(this).selectAll("a-box").transition().duration(500)
+                    .attr({
+                        "color": "green"
+                    })
+            })
+            .on("mouseleave", function () {
+                this.hovering = false;
+                d3.select(this).selectAll("a-box").transition().duration(500)
+                    .attr({
+                        "color": 'grey'
+                    })
+            })
+
+
+        var controlLifeLearning = d3.select("#lifelongLearning")
+            .on("click", function () {
+                console.log("Displaying Lifelong Learning")
+                loadDeanStreetB()
+                openNav()
+            })
+            .on("mouseenter", function () {
+                if (this.hovering) return
+                this.hovering = true;
+                d3.select(this).selectAll("a-box").transition().duration(500)
+                    .attr({
+                        "color": "green"
+                    })
+            })
+            .on("mouseleave", function () {
+                this.hovering = false;
+                d3.select(this).selectAll("a-box").transition().duration(500)
+                    .attr({
+                        "color": 'grey'
+                    })
+            })
+    </script>
+</body>
+</html>
