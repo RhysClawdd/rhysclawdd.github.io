@@ -6,8 +6,9 @@
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script> <!--On hover interactions-->
+
     <meta charset="utf-8" />
-    <title>Dean Street Model</title>
+    <title>Offline Model</title>
     <style>
         body {
             font-family: "Lato", sans-serif;
@@ -81,7 +82,7 @@
 
     <a-scene>
         <a-entity position="4 20 8" rotation="0 0 0">
-            <a-entity camera look-controls wasd-controls>
+            <a-entity camera look-controls>
                 <a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
                           animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1"
                           animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
@@ -91,7 +92,26 @@
                           geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.027"></a-entity>
             </a-entity>
         </a-entity>
-        <a-entity id="Fridd21-23" position="-50 0 -5">
+
+        <a-entity id="building18" position="-18 0 18" class="fridd">
+            <a-box depth="10" width="20" height="3" position="0 1.5 0" color="grey"></a-box>
+            <a-box depth="8" width="4" height="3" position="11 1.5 -4" color="grey"></a-box>
+            <a-box depth="3" width="22" height="3" position="-2 1.5 -6.5" color="grey"></a-box>
+            <a-box depth="8" width="2" height="3" position="9 1.5 4" color="grey"></a-box>
+        </a-entity>
+
+        <a-entity id="building19" position="4 0 18" class="fridd">
+            <a-entity id="building19SectionA" position="0 0 -6">
+                <a-box depth="6" width="4" height="3" position="0 1.5 0" color="grey"></a-box>
+                <a-box depth="8" width="2" height="3" position="0 1.5 0" color="grey"></a-box>
+            </a-entity>
+            <a-entity id="building19SectionB" position="-2 0 0">
+                <a-box depth="6" width="4" height="3" position="0 1.5 0" color="grey"></a-box>
+                <a-box depth="8" width="2" height="3" position="0 1.5 0" color="grey"></a-box>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="Fridd20-22" position="-40 0 -5" class="fridd">
             <a-entity id="building20" position="0 0 0">
                 <a-box depth="3" width="8" height="4" position="0 2 0" color="grey" class="building20"></a-box>
                 <a-box depth="12" width="3" height="4" position="0 2 -2" color="grey"></a-box>
@@ -107,7 +127,7 @@
             </a-entity>
         </a-entity>
 
-        <a-entity id="building23" position="0 0 0">
+        <a-entity id="building23" position="0 0 0" class="fridd">
             <a-entity id="building23SectionA" position="0 0 0">
                 <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
                 <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
@@ -126,7 +146,7 @@
             </a-entity>
         </a-entity>
 
-        <a-entity id="building24" position="12 0 -8">
+        <a-entity id="building24" position="12 0 -8" class="fridd">
             <a-entity id="building24SectionA" position="0 0 -6">
                 <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
                 <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
@@ -145,119 +165,63 @@
             </a-entity>
         </a-entity>
 
-        <a-entity id="building19" position="0 0 18">
-            <a-entity id="building19SectionA" position="0 0 -6">
-                <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
-                <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
-            </a-entity>
-            <a-entity id="building19SectionB" position="-2 0 0">
-                <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
-                <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
-            </a-entity>
-        </a-entity>
-
-        <a-entity id="building30" position="0 0 18">
+        <a-entity id="building30" position="14 0 14" class="fridd">
             <a-entity id="building30SectionA" position="0 0 -6">
-                <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
-                <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
+                <a-box depth="6" width="4" height="3" position="0 1.5 0" color="grey"></a-box>
+                <a-box depth="8" width="2" height="3" position="0 1.5 0" color="grey"></a-box>
             </a-entity>
-            <a-entity id="building30SectionB" position="-2 0 0">
-                <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
-                <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
+            <a-entity id="building30SectionB" position="2 0 0">
+                <a-box depth="6" width="4" height="3" position="0 1.5 0" color="grey"></a-box>
+                <a-box depth="8" width="2" height="3" position="0 1.5 0" color="grey"></a-box>
             </a-entity>
         </a-entity>
-
-
-
-
-
-
-
-
-
-
-
-
 
     </a-scene>
-    <div>
-        <h1>Click on Dean Street</h1>
-    </div>
+
     <div id="mySidebar" class="sidebar">
+        <div>
+            <button onclick="selectFridd()">Select Fridd</button>
+        </div>
         <button class="openbtn" onclick="closeNav()">CLOSE</button>
         <h1 id="type">Map Area</h1>
         <h2 id="subType">If you're reading this an error has occured</h2>
+        <img id="dispImg" />
         <p id="subTypeDesc">
             This Error has occured most likely due to a failure to swap the innerHTML of this section with the intended description
         </p>
     </div>
-
+    <div>
+        <button type="button" onclick="alert('Hello world!')">Click Me!</button>
+    </div>
+    <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+    </div>
+    <div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
+        <a href="https://rhysclawdd.github.io/CarModel.html"><button>Car Model</button></a>
+        <a href="https://rhysclawdd.github.io/LCVModel.html"><button>LCV Model</button></a>
+        <a href="https://rhysclawdd.github.io/HGVModel.html"><button>HGV Model</button></a>
+        <a href="https://rhysclawdd.github.io"><button>Home</button></a>
+    </div>
     <script>
+
+        var slider = document.getElementById("myRange");
+        var scene = d3.select("a-scene");
         var x = document.getElementById("type");
         var y = document.getElementById("subType");
         var z = document.getElementById("subTypeDesc");
+        var dispImg = document.getElementById("dispImg");
+        var image = scene.selectAll("a-image.displayImg").data("displayImg");
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        loadDataToModel("building18", "Friddoedd Site", "Y Brailsfordd (Gym and Leisure Center)", "Gym and Leisure Center");
-        loadDataToModel("building19", "Friddoedd Site", "Elidir Halls", "A generic halls building");
-        loadDataToModel("building20", "Friddoedd Site", "Enlli Halls", "The Left of the 3");
-        loadDataToModel("building21", "Friddoedd Site", "Peris Halls", "The Middle of the 3");
-        loadDataToModel("building22", "Friddoedd Site", "Alaw Halls", "The Right of the 3");
-        loadDataToModel("building23", "Friddoedd Site", "Y Borth Halls", "Seperated into multiple blocks these older buildings ...");
-        loadDataToModel("building24", "Friddoedd Site", "Cefn y Coed Halls", "Seperated into multiple blocks these older buildings ...");
-        loadDataToModel("building30", "Friddoedd Site", "Y Glyder Halls & Security Lodge", "A Halls building and a security lodge");
-
-        //Sidebar Functionss
-=======
-=======
->>>>>>> parent of 2777411... Update friddModel.html
-=======
->>>>>>> parent of 2777411... Update friddModel.html
-        function loadBuilding19() {
-            x.innerHTML = "Friddoedd Site";
-            y.innerHTML = "Elidir Halls";
-            z.innerHTML = "Generic Halls text";
-        }
-        function loadBuilding20() {
-             x.innerHTML = "Friddoedd Site";
-             y.innerHTML = "Enlli Halls";
-             z.innerHTML = "The Left of the 3";
-        }
-        function loadBuilding21() {
-            x.innerHTML = "Friddoedd Site";
-            y.innerHTML = "Peris Halls";
-            z.innerHTML = "The Middle of the 3";
-        }
-        function loadBuilding22() {
-            x.innerHTML = "Friddoedd Site";
-            y.innerHTML = "Alaw Halls";
-            z.innerHTML = "The Right of the 3";
-        }
-        function loadBuilding23() {
-            x.innerHTML = "Friddoedd Site";
-            y.innerHTML = "Y Borth Halls";
-            z.innerHTML = "Seperated into multiple blocks these older buildings ...";
-        }
-        function loadBuilding24() {
-            x.innerHTML = "Friddoedd Site";
-            y.innerHTML = "Cefn y Coed Halls";
-            z.innerHTML = "Seperated into multiple blocks these older buildings ...";
-        }
-        
-
-
-
+        loadDataToModel("building18", "Friddoedd Site", "Y Brailsfordd (Gym and Leisure Center)", "Gym and Leisure Center", "https://rhysclawdd.github.io/Peris.jpg");
+        loadDataToModel("building19", "Friddoedd Site", "Elidir Halls", "A generic halls building", "https://rhysclawdd.github.io/Peris.jpg");
+        loadDataToModel("building20", "Friddoedd Site", "Enlli Halls", "The Left of the 3", "https://rhysclawdd.github.io/Peris.jpg");
+        loadDataToModel("building21", "Friddoedd Site", "Peris Halls", "The Middle of the 3", "https://rhysclawdd.github.io/Peris.jpg");
+        loadDataToModel("building22", "Friddoedd Site", "Alaw Halls", "The Right of the 3", "https://rhysclawdd.github.io/Peris.jpg");
+        loadDataToModel("building23", "Friddoedd Site", "Y Borth Halls", "Seperated into multiple blocks these older buildings ...", "https://rhysclawdd.github.io/Peris.jpg");
+        loadDataToModel("building24", "Friddoedd Site", "Cefn y Coed Halls", "Seperated into multiple blocks these older buildings ...", "https://rhysclawdd.github.io/Peris.jpg");
+        loadDataToModel("building30", "Friddoedd Site", "Y Glyder Halls & Security Lodge", "A Halls building and a security lodge", "https://rhysclawdd.github.io/Peris.jpg");
 
         //Sidebar Functions
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 2777411... Update friddModel.html
-=======
->>>>>>> parent of 2777411... Update friddModel.html
-=======
->>>>>>> parent of 2777411... Update friddModel.html
         function openNav() {
             document.getElementById("mySidebar").style.width = "33%";
             document.getElementById("mySidebar").style.paddingLeft = "32px";
@@ -266,10 +230,7 @@
             document.getElementById("mySidebar").style.width = "0";
             document.getElementById("mySidebar").style.paddingLeft = "0";
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        function loadDataToModel(buildingID, type, subtype, subtypeDesc) {
+        function loadDataToModel(buildingID, type, subtype, subtypeDesc, dispImg) {
             console.log("#" + buildingID)
             var buildingID = d3.select("#" + buildingID)
                 .on("click", function () {
@@ -277,6 +238,7 @@
                     x.innerHTML = type;
                     y.innerHTML = subtype;
                     z.innerHTML = subtypeDesc;
+                    dispImg.innerHTML = dispImg;
                     openNav()
                 })
                 .on("mouseenter", function () {
@@ -297,152 +259,12 @@
         }
         function selectFridd() {
             var fridd = d3.selectAll(".fridd")
-=======
-=======
->>>>>>> parent of 2777411... Update friddModel.html
-=======
->>>>>>> parent of 2777411... Update friddModel.html
-    </script>
-    <script>
-        //-------------------------------------------------------------------------------------------------------------------------------
-        var controlBuilding19 = d3.select("#building19")
-            .on("click", function () {
-                console.log("Displaying Building19")
-                loadBuilding19()
-                openNav()
-            })
-            .on("mouseenter", function () {
-                if (this.hovering) return
-                this.hovering = true;
-                d3.select(this).selectAll("a-box").transition().duration(500)
-                    .attr({
-                        "color": "green"
-                    })
-            })
-            .on("mouseleave", function () {
-                this.hovering = false;
-                d3.select(this).selectAll("a-box").transition().duration(500)
-                    .attr({
-                        "color": 'grey'
-                    })
-            })
-        //TEMPLTE COPY START --------------------------------------------------------------------------------------------------------------
-        var controlBuilding20 = d3.select("#building20")
-            .on("click", function () {
-                console.log("Displaying Building20")
-                loadBuilding20()
-                openNav()
-            })
-            .on("mouseenter", function () {
-                if (this.hovering) return
-                this.hovering = true;
-                d3.select(this).selectAll("a-box").transition().duration(500)
-                    .attr({
-                        "color": "green"
-                    })
-            })
-            .on("mouseleave", function () {
-                this.hovering = false;
-                d3.select(this).selectAll("a-box").transition().duration(500)
-                    .attr({
-                        "color": 'grey'
-                    })
-            })
-        //TEMPLTE COPY END --------------------------------------------------------------------------------------------------------------
-        var controlBuilding21 = d3.select("#building21")
-            .on("click", function () {
-                console.log("Displaying Building21")
-                loadBuilding21()
-                openNav()
-            })
-            .on("mouseenter", function () {
-                if (this.hovering) return
-                this.hovering = true;
-                d3.select(this).selectAll("a-box").transition().duration(500)
-                    .attr({
-                        "color": "green"
-                    })
-            })
-            .on("mouseleave", function () {
-                this.hovering = false;
-                d3.select(this).selectAll("a-box").transition().duration(500)
-                    .attr({
-                        "color": 'grey'
-                    })
-            })
-        //-------------------------------------------------------------------------------------------------------------------------------
-        var controlBuilding22 = d3.select("#building22")
-            .on("click", function () {
-                console.log("Displaying Building22")
-                loadBuilding22()
-                openNav()
-            })
-            .on("mouseenter", function () {
-                if (this.hovering) return
-                this.hovering = true;
-                d3.select(this).selectAll("a-box").transition().duration(500)
-                    .attr({
-                        "color": "green"
-                    })
-            })
-            .on("mouseleave", function () {
-                this.hovering = false;
-                d3.select(this).selectAll("a-box").transition().duration(500)
-                    .attr({
-                        "color": 'grey'
-                    })
-            })
-        //-------------------------------------------------------------------------------------------------------------------------------
-        var controlBuilding23 = d3.select("#building23")
-            .on("click", function () {
-                console.log("Displaying Building23")
-                loadBuilding23()
-                openNav()
-            })
-            .on("mouseenter", function () {
-                if (this.hovering) return
-                this.hovering = true;
-                d3.select(this).selectAll("a-box").transition().duration(500)
-                    .attr({
-                        "color": "green"
-                    })
-            })
-            .on("mouseleave", function () {
-                this.hovering = false;
-                d3.select(this).selectAll("a-box").transition().duration(500)
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 2777411... Update friddModel.html
-=======
->>>>>>> parent of 2777411... Update friddModel.html
-=======
->>>>>>> parent of 2777411... Update friddModel.html
                 .attr({
-                       "color" : 'grey'
-                     })
-            })
-        //-------------------------------------------------------------------------------------------------------------------------------
-        var controlBuilding24 = d3.select("#building24")
-            .on("click", function () {
-                console.log("Displaying Building24")
-                loadBuilding24()
-                openNav()
-            })
-            .on("mouseenter", function () {
-                if (this.hovering) return
-                this.hovering = true;
-                d3.select(this).selectAll("a-box").transition().duration(500)
-                    .attr({
-                        "color": "green"
-                    })
-            })
-            .on("mouseleave", function () {
-                this.hovering = false;
-                d3.select(this).selectAll("a-box").transition().duration(500)
-                    .attr({
-                        "color": 'grey'
-                    })
-            })
+                    "color": 'red'
+                })
+        }
+        function checkMovement() {
+        }
     </script>
 </body>
 </html>
