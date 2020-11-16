@@ -81,7 +81,7 @@
 <body>
 
     <a-scene>
-        <a-entity position="4 20 8" rotation="0 0 0">
+        <a-entity id="camera" position="4 20 8" rotation="0 0 0">
             <a-entity camera look-controls>
                 <a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
                           animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1"
@@ -93,125 +93,144 @@
             </a-entity>
         </a-entity>
 
-        <a-entity id="building18" position="-18 0 18" class="fridd">
-            <a-box depth="10" width="20" height="3" position="0 1.5 0" color="grey"></a-box>
-            <a-box depth="8" width="4" height="3" position="11 1.5 -4" color="grey"></a-box>
-            <a-box depth="3" width="22" height="3" position="-2 1.5 -6.5" color="grey"></a-box>
-            <a-box depth="8" width="2" height="3" position="9 1.5 4" color="grey"></a-box>
+        <a-entity id="friddSite">
+            <a-entity id="building18" position="-18 0 18" class="fridd">
+                <a-box depth="10" width="20" height="3" position="0 1.5 0" color="grey"></a-box>
+                <a-box depth="8" width="4" height="3" position="11 1.5 -4" color="grey"></a-box>
+                <a-box depth="3" width="22" height="3" position="-2 1.5 -6.5" color="grey"></a-box>
+                <a-box depth="8" width="2" height="3" position="9 1.5 4" color="grey"></a-box>
+            </a-entity>
+
+            <a-entity id="building19" position="4 0 18" class="fridd">
+                <a-entity id="building19SectionA" position="0 0 -6">
+                    <a-box depth="6" width="4" height="3" position="0 1.5 0" color="grey"></a-box>
+                    <a-box depth="8" width="2" height="3" position="0 1.5 0" color="grey"></a-box>
+                </a-entity>
+                <a-entity id="building19SectionB" position="-2 0 0">
+                    <a-box depth="6" width="4" height="3" position="0 1.5 0" color="grey"></a-box>
+                    <a-box depth="8" width="2" height="3" position="0 1.5 0" color="grey"></a-box>
+                </a-entity>
+            </a-entity>
+
+            <a-entity id="Fridd20-22" position="-40 0 -5" class="fridd">
+                <a-entity id="building20" position="0 0 0">
+                    <a-box depth="3" width="8" height="4" position="0 2 0" color="grey" class="building20"></a-box>
+                    <a-box depth="12" width="3" height="4" position="0 2 -2" color="grey"></a-box>
+                </a-entity>
+                <a-entity id="building21" position="12 0 0">
+                    <a-box depth="3" width="8" height="4" position="0 2 0" color="grey"></a-box>
+                    <a-box depth="12" width="3" height="4" position="0 2 -2" color="grey"></a-box>
+                </a-entity>
+
+                <a-entity id="building22" position="24 0 0">
+                    <a-box depth="3" width="8" height="4" position="0 2 0" color="grey"></a-box>
+                    <a-box depth="12" width="3" height="4" position="0 2 -2" color="grey"></a-box>
+                </a-entity>
+            </a-entity>
+
+            <a-entity id="building23" position="0 0 0" class="fridd">
+                <a-entity id="building23SectionA" position="0 0 0">
+                    <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
+                    <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
+                </a-entity>
+                <a-entity id="building23SectionB" position="0 0 0" rotation="0 90 0">
+                    <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
+                    <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
+                </a-entity>
+                <a-entity id="building23SectionC" position="-8 0 -8">
+                    <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
+                    <a-box depth="6" width="2" height="3" position="4 1.5 1s" color="grey"></a-box>
+                </a-entity>
+                <a-entity id="building23SectionD" position="-6 0 -14">
+                    <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
+                    <a-box depth="6" width="2" height="3" position="4 1.5 -1" color="grey"></a-box>
+                </a-entity>
+            </a-entity>
+
+            <a-entity id="building24" position="12 0 -8" class="fridd">
+                <a-entity id="building24SectionA" position="0 0 -6">
+                    <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
+                    <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
+                </a-entity>
+                <a-entity id="building24SectionB" position="-2 0 0">
+                    <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
+                    <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
+                </a-entity>
+                <a-entity id="building24SectionC" position="0 0 -6" rotation="0 90 0">
+                    <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
+                    <a-box depth="6" width="2" height="3" position="4 1.5 1s" color="grey"></a-box>
+                </a-entity>
+                <a-entity id="building24SectionD" position="-6 0 -4" rotation="0 90 0">
+                    <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
+                    <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
+                </a-entity>
+            </a-entity>
+
+            <a-entity id="building30" position="14 0 14" class="fridd">
+                <a-entity id="building30SectionA" position="0 0 -6">
+                    <a-box depth="6" width="4" height="3" position="0 1.5 0" color="grey"></a-box>
+                    <a-box depth="8" width="2" height="3" position="0 1.5 0" color="grey"></a-box>
+                </a-entity>
+                <a-entity id="building30SectionB" position="2 0 0">
+                    <a-box depth="6" width="4" height="3" position="0 1.5 0" color="grey"></a-box>
+                    <a-box depth="8" width="2" height="3" position="0 1.5 0" color="grey"></a-box>
+                </a-entity>
+            </a-entity>
         </a-entity>
-
-        <a-entity id="building19" position="4 0 18" class="fridd">
-            <a-entity id="building19SectionA" position="0 0 -6">
-                <a-box depth="6" width="4" height="3" position="0 1.5 0" color="grey"></a-box>
-                <a-box depth="8" width="2" height="3" position="0 1.5 0" color="grey"></a-box>
-            </a-entity>
-            <a-entity id="building19SectionB" position="-2 0 0">
-                <a-box depth="6" width="4" height="3" position="0 1.5 0" color="grey"></a-box>
-                <a-box depth="8" width="2" height="3" position="0 1.5 0" color="grey"></a-box>
-            </a-entity>
-        </a-entity>
-
-        <a-entity id="Fridd20-22" position="-40 0 -5" class="fridd">
-            <a-entity id="building20" position="0 0 0">
-                <a-box depth="3" width="8" height="4" position="0 2 0" color="grey" class="building20"></a-box>
-                <a-box depth="12" width="3" height="4" position="0 2 -2" color="grey"></a-box>
-            </a-entity>
-            <a-entity id="building21" position="12 0 0">
-                <a-box depth="3" width="8" height="4" position="0 2 0" color="grey"></a-box>
-                <a-box depth="12" width="3" height="4" position="0 2 -2" color="grey"></a-box>
-            </a-entity>
-
-            <a-entity id="building22" position="24 0 0">
-                <a-box depth="3" width="8" height="4" position="0 2 0" color="grey"></a-box>
-                <a-box depth="12" width="3" height="4" position="0 2 -2" color="grey"></a-box>
-            </a-entity>
-        </a-entity>
-
-        <a-entity id="building23" position="0 0 0" class="fridd">
-            <a-entity id="building23SectionA" position="0 0 0">
-                <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
-                <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
-            </a-entity>
-            <a-entity id="building23SectionB" position="0 0 0" rotation="0 90 0">
-                <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
-                <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
-            </a-entity>
-            <a-entity id="building23SectionC" position="-8 0 -8">
-                <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
-                <a-box depth="6" width="2" height="3" position="4 1.5 1s" color="grey"></a-box>
-            </a-entity>
-            <a-entity id="building23SectionD" position="-6 0 -14">
-                <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
-                <a-box depth="6" width="2" height="3" position="4 1.5 -1" color="grey"></a-box>
-            </a-entity>
-        </a-entity>
-
-        <a-entity id="building24" position="12 0 -8" class="fridd">
-            <a-entity id="building24SectionA" position="0 0 -6">
-                <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
-                <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
-            </a-entity>
-            <a-entity id="building24SectionB" position="-2 0 0">
-                <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
-                <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
-            </a-entity>
-            <a-entity id="building24SectionC" position="0 0 -6" rotation="0 90 0">
-                <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
-                <a-box depth="6" width="2" height="3" position="4 1.5 1s" color="grey"></a-box>
-            </a-entity>
-            <a-entity id="building24SectionD" position="-6 0 -4" rotation="0 90 0">
-                <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
-                <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
-            </a-entity>
-        </a-entity>
-
-        <a-entity id="building30" position="14 0 14" class="fridd">
-            <a-entity id="building30SectionA" position="0 0 -6">
-                <a-box depth="6" width="4" height="3" position="0 1.5 0" color="grey"></a-box>
-                <a-box depth="8" width="2" height="3" position="0 1.5 0" color="grey"></a-box>
-            </a-entity>
-            <a-entity id="building30SectionB" position="2 0 0">
-                <a-box depth="6" width="4" height="3" position="0 1.5 0" color="grey"></a-box>
-                <a-box depth="8" width="2" height="3" position="0 1.5 0" color="grey"></a-box>
-            </a-entity>
-        </a-entity>
-
     </a-scene>
 
+    <!-- Side Panel Information-->
     <div id="mySidebar" class="sidebar">
-        <div>
-            <button onclick="selectFridd()">Select Fridd</button>
-        </div>
+
         <button class="openbtn" onclick="closeNav()">CLOSE</button>
+
         <h1 id="type">Map Area</h1>
         <h2 id="subType">If you're reading this an error has occured</h2>
-        <img id="dispImg" />
+        <img id="dispImg" src="" />
         <p id="subTypeDesc">
             This Error has occured most likely due to a failure to swap the innerHTML of this section with the intended description
         </p>
     </div>
-    <div>
-        <button type="button" onclick="alert('Hello world!')">Click Me!</button>
-    </div>
-    <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-    </div>
-    <div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
-        <a href="https://rhysclawdd.github.io/CarModel.html"><button>Car Model</button></a>
-        <a href="https://rhysclawdd.github.io/LCVModel.html"><button>LCV Model</button></a>
-        <a href="https://rhysclawdd.github.io/HGVModel.html"><button>HGV Model</button></a>
-        <a href="https://rhysclawdd.github.io"><button>Home</button></a>
-    </div>
-    <script>
 
+    <!-- Menu System-->
+    <div style='position: fixed; bottom: 10px; width:100%; text-align: center; z-index: 1;'>
+        <button>Select Fridd</button>
+        <button onclick="toFridd()">N/A</button>
+        <button>N/A</button>
+        <button>N/A</button>
+        <button>N/A</button>
+        <div class="slidecontainer">
+            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+        </div>
+    </div>
+
+
+    <script>
+        /*
+         * Set up functions to defaut colors of areas, loaded by passing in the relevant zone anf changing the base color from gray to new color
+         * this gets round the highlighting issue
+         * function getColor(buildingClass)
+         * function setColor(buildingClass,color)
+         */
         var slider = document.getElementById("myRange");
+        slider.oninput = function () { rotateCurrentModel(slider.value) }
+        var friddSite = d3.select('#friddSite');
+
+        //Camera & Scene
         var scene = d3.select("a-scene");
+        var camera = d3.select("#camera")
+
+        //Display Data Controllers
         var x = document.getElementById("type");
         var y = document.getElementById("subType");
         var z = document.getElementById("subTypeDesc");
         var dispImg = document.getElementById("dispImg");
         var image = scene.selectAll("a-image.displayImg").data("displayImg");
 
+        //Boolean Variables
+        var friddSelected = false;
+
+        //Data Insertion
         loadDataToModel("building18", "Friddoedd Site", "Y Brailsfordd (Gym and Leisure Center)", "Gym and Leisure Center", "https://rhysclawdd.github.io/Peris.jpg");
         loadDataToModel("building19", "Friddoedd Site", "Elidir Halls", "A generic halls building", "https://rhysclawdd.github.io/Peris.jpg");
         loadDataToModel("building20", "Friddoedd Site", "Enlli Halls", "The Left of the 3", "https://rhysclawdd.github.io/Peris.jpg");
@@ -230,7 +249,7 @@
             document.getElementById("mySidebar").style.width = "0";
             document.getElementById("mySidebar").style.paddingLeft = "0";
         }
-        function loadDataToModel(buildingID, type, subtype, subtypeDesc, dispImg) {
+        function loadDataToModel(buildingID, type, subtype, subtypeDesc, imgToDisp) {
             console.log("#" + buildingID)
             var buildingID = d3.select("#" + buildingID)
                 .on("click", function () {
@@ -238,7 +257,7 @@
                     x.innerHTML = type;
                     y.innerHTML = subtype;
                     z.innerHTML = subtypeDesc;
-                    dispImg.innerHTML = dispImg;
+                    dispImg.src = imgToDisp;
                     openNav()
                 })
                 .on("mouseenter", function () {
@@ -258,12 +277,27 @@
                 })
         }
         function selectFridd() {
-            var fridd = d3.selectAll(".fridd")
-                .attr({
-                    "color": 'red'
-                })
+            if (friddSelected == false)
+                friddSelected = true;
+            else
+                friddSelected = false;
+
+            console.log("Fridd Selected Status: " + friddSelected)
+
+            friddSite.selectAll("a-box").attr({
+                "color": 'red'
+            })
         }
-        function checkMovement() {
+        function toFridd() {
+            camera.attr({
+                "position": '4 30 40'
+            })
+        }
+        function rotateCurrentModel(sliderValue) {
+            friddSite.attr({
+                "rotation": '0 ' + 360 / 100 * sliderValue + ' 0'
+
+            })
         }
     </script>
 </body>
