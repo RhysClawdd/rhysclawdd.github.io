@@ -6,6 +6,7 @@
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script> <!--On hover interactions-->
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
 
     <meta charset="utf-8" />
     <title>Offline Model</title>
@@ -81,6 +82,8 @@
 <body>
 
     <a-scene>
+        <a-entity environment="preset: forest; playArea: 1.25; dressingAmount: 50; fog: 0.6"></a-entity>
+
         <!--Camera-->
         <a-entity id="cameraRot">
             <a-entity id="camera" position="4 20 8" rotation="0 0 0">
@@ -273,7 +276,7 @@
     <!-- Menu System-->
     <div style='position: fixed; bottom: 10px; width:100%; text-align: center; z-index: 1;'>
         <button onclick="selectFridd()">Select Fridd</button>
-        <button onclick="toFridd()">N/A</button>
+        <button onclick="toFridd()">Jump To Fridd</button>
         <button>N/A</button>
         <button>N/A</button>
         <button>N/A</button>
@@ -320,14 +323,14 @@
         var selectionG = d3.select("#selectionG");
 
         //Data Insertion
-        loadDataToModel("building18", "Friddoedd Site", "Y Brailsfordd (Gym and Leisure Center)", "Gym and Leisure Center", "https://rhysclawdd.github.io/Peris.jpg", 1);
-        loadDataToModel("building19", "Friddoedd Site", "Elidir Halls", "A generic halls building", "https://rhysclawdd.github.io/Peris.jpg", 2);
-        loadDataToModel("building20", "Friddoedd Site", "Enlli Halls", "The Left of the 3", "https://rhysclawdd.github.io/Peris.jpg", 3);
+        loadDataToModel("building18", "Friddoedd Site", "Y Brailsfordd (Gym and Leisure Center)", "Gym and Leisure Center", "http://www.bangor.ac.uk/brailsford/images/outside.jpg", 1);
+        loadDataToModel("building19", "Friddoedd Site", "Elidir Halls", "A generic halls building", "https://rhysclawdd.github.io/Elidir.jpg", 2);
+        loadDataToModel("building20", "Friddoedd Site", "Enlli Halls", "The Left of the 3", "https://www.bangor.ac.uk/sites/default/files/styles/scale_900/public/2020-05/Enlli.jpg?itok=-yLcGw3P", 3);
         loadDataToModel("building21", "Friddoedd Site", "Peris Halls", "The Middle of the 3", "https://rhysclawdd.github.io/Peris.jpg", 4);
-        loadDataToModel("building22", "Friddoedd Site", "Alaw Halls", "The Right of the 3", "https://rhysclawdd.github.io/Peris.jpg", 5);
-        loadDataToModel("building23", "Friddoedd Site", "Y Borth Halls", "Seperated into multiple blocks these older buildings ...", "https://rhysclawdd.github.io/Peris.jpg", 6);
-        loadDataToModel("building24", "Friddoedd Site", "Cefn y Coed Halls", "Seperated into multiple blocks these older buildings ...", "https://rhysclawdd.github.io/Peris.jpg", 7);
-        loadDataToModel("building30", "Friddoedd Site", "Y Glyder Halls & Security Lodge", "A Halls building and a security lodge", "https://rhysclawdd.github.io/Peris.jpg", 1);
+        loadDataToModel("building22", "Friddoedd Site", "Alaw Halls", "The Right of the 3", "https://www.bangor.ac.uk/sites/default/files/styles/scale_900/public/2020-06/Alaw%20-%20newer.jpg?itok=Eug5PnUi", 5);
+        loadDataToModel("building23", "Friddoedd Site", "Y Borth Halls", "Seperated into multiple blocks these older buildings ...", "https://www.bangor.ac.uk/sites/default/files/styles/scale_900/public/2020-05/Borth.jpg?itok=n_UNGRDp", 6);
+        loadDataToModel("building24", "Friddoedd Site", "Cefn y Coed Halls", "Seperated into multiple blocks these older buildings ...", "https://www.bangor.ac.uk/sites/default/files/styles/scale_900/public/2020-05/Cefn%20y%20Coed.jpg?itok=n82y0ohJ", 7);
+        loadDataToModel("building30", "Friddoedd Site", "Y Glyder Halls & Security Lodge", "A Halls building and a security lodge", "https://rhysclawdd.github.io/Glyder.jpg", 1);
 
         //Sidebar Functions
         function openNav() {
