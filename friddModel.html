@@ -6,6 +6,7 @@
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script> <!--On hover interactions-->
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
 
     <meta charset="utf-8" />
     <title>Online Model</title>
@@ -79,138 +80,259 @@
 </head>
 
 <body>
+
     <a-scene>
-        <a-assets>
-            <img id="perisImg" src="https://rhysclawdd.github.io/Peris.jpg">
-        </a-assets>
-        <a-entity position="4 20 8" rotation="0 0 0">
-            <a-entity camera look-controls wasd-controls>
-                <a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
-                          animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1"
-                          animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
-                          cursor="fuse: true;"
-                          material="color: black; shader: flat"
-                          position="0 0 -3"
-                          geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.027"></a-entity>
+        <a-entity environment="preset: forest; playArea: 1.25; dressingAmount: 50; fog: 0.6"></a-entity>
+
+        <!--Camera-->
+        <a-entity id="cameraRot">
+            <a-entity id="camera" position="4 20 8" rotation="0 0 0">
+                <a-entity camera look-controls wasd-controls="acceleration:500">
+                    <a-entity animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
+                              animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1"
+                              animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
+                              cursor="fuse: true;"
+                              material="color: black; shader: flat"
+                              position="0 0 -3"
+                              geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.027"></a-entity>
+                </a-entity>
             </a-entity>
         </a-entity>
 
-        <a-entity id="building18" position="-18 0 18" class="fridd">
-            <a-box depth="10" width="20" height="3" position="0 1.5 0" color="grey"></a-box>
-            <a-box depth="8" width="4" height="3" position="11 1.5 -4" color="grey"></a-box>
-            <a-box depth="3" width="22" height="3" position="-2 1.5 -6.5" color="grey"></a-box>
-            <a-box depth="8" width="2" height="3" position="9 1.5 4" color="grey"></a-box>
-        </a-entity>
-
-        <a-entity id="building19" position="4 0 18" class="fridd">
-            <a-entity id="building19SectionA" position="0 0 -6">
-                <a-box depth="6" width="4" height="3" position="0 1.5 0" color="grey"></a-box>
-                <a-box depth="8" width="2" height="3" position="0 1.5 0" color="grey"></a-box>
+        <!--Fridd Site Models-->
+        <a-entity id="friddSite">
+            <a-entity id="building18" position="-18 0 18" class="fridd">
+                <a-box depth="10" width="20" height="3" position="0 1.5 0" color="grey"></a-box>
+                <a-box depth="8" width="4" height="3" position="11 1.5 -4" color="grey"></a-box>
+                <a-box depth="3" width="22" height="3" position="-2 1.5 -6.5" color="grey"></a-box>
+                <a-box depth="8" width="2" height="3" position="9 1.5 4" color="grey"></a-box>
             </a-entity>
-            <a-entity id="building19SectionB" position="-2 0 0">
-                <a-box depth="6" width="4" height="3" position="0 1.5 0" color="grey"></a-box>
-                <a-box depth="8" width="2" height="3" position="0 1.5 0" color="grey"></a-box>
-            </a-entity>
-        </a-entity>
 
-        <a-entity id="Fridd20-22" position="-40 0 -5" class="fridd">
-            <a-entity id="building20" position="0 0 0">
+            <a-entity id="building19" position="4 0 18" class="fridd">
+                <a-entity id="building19SectionA" position="0 0 -6">
+                    <a-box depth="6" width="4" height="3" position="0 1.5 0" color="grey"></a-box>
+                    <a-box depth="8" width="2" height="3" position="0 1.5 0" color="grey"></a-box>
+                </a-entity>
+                <a-entity id="building19SectionB" position="-2 0 0">
+                    <a-box depth="6" width="4" height="3" position="0 1.5 0" color="grey"></a-box>
+                    <a-box depth="8" width="2" height="3" position="0 1.5 0" color="grey"></a-box>
+                </a-entity>
+            </a-entity>
+
+            <a-entity id="building20" position="-40 0 -5" class="fridd">
                 <a-box depth="3" width="8" height="4" position="0 2 0" color="grey" class="building20"></a-box>
                 <a-box depth="12" width="3" height="4" position="0 2 -2" color="grey"></a-box>
             </a-entity>
-            <a-entity id="building21" position="12 0 0">
+            <a-entity id="building21" position="-28 0 -5" class="fridd">
                 <a-box depth="3" width="8" height="4" position="0 2 0" color="grey"></a-box>
                 <a-box depth="12" width="3" height="4" position="0 2 -2" color="grey"></a-box>
             </a-entity>
-
-            <a-entity id="building22" position="24 0 0">
+            <a-entity id="building22" position="-16 0 -5" class="fridd">
                 <a-box depth="3" width="8" height="4" position="0 2 0" color="grey"></a-box>
                 <a-box depth="12" width="3" height="4" position="0 2 -2" color="grey"></a-box>
             </a-entity>
+            <a-entity id="building23" position="0 0 0" class="fridd">
+                <a-entity id="building23SectionA" position="0 0 0">
+                    <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
+                    <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
+                </a-entity>
+                <a-entity id="building23SectionB" position="0 0 0" rotation="0 90 0">
+                    <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
+                    <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
+                </a-entity>
+                <a-entity id="building23SectionC" position="-8 0 -8">
+                    <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
+                    <a-box depth="6" width="2" height="3" position="4 1.5 1s" color="grey"></a-box>
+                </a-entity>
+                <a-entity id="building23SectionD" position="-6 0 -14">
+                    <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
+                    <a-box depth="6" width="2" height="3" position="4 1.5 -1" color="grey"></a-box>
+                </a-entity>
+            </a-entity>
+
+            <a-entity id="building24" position="12 0 -8" class="fridd">
+                <a-entity id="building24SectionA" position="0 0 -6">
+                    <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
+                    <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
+                </a-entity>
+                <a-entity id="building24SectionB" position="-2 0 0">
+                    <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
+                    <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
+                </a-entity>
+                <a-entity id="building24SectionC" position="0 0 -6" rotation="0 90 0">
+                    <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
+                    <a-box depth="6" width="2" height="3" position="4 1.5 1s" color="grey"></a-box>
+                </a-entity>
+                <a-entity id="building24SectionD" position="-6 0 -4" rotation="0 90 0">
+                    <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
+                    <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
+                </a-entity>
+            </a-entity>
+
+            <a-entity id="building30" position="14 0 14" class="fridd">
+                <a-entity id="building30SectionA" position="0 0 -6">
+                    <a-box depth="6" width="4" height="3" position="0 1.5 0" color="grey"></a-box>
+                    <a-box depth="8" width="2" height="3" position="0 1.5 0" color="grey"></a-box>
+                </a-entity>
+                <a-entity id="building30SectionB" position="2 0 0">
+                    <a-box depth="6" width="4" height="3" position="0 1.5 0" color="grey"></a-box>
+                    <a-box depth="8" width="2" height="3" position="0 1.5 0" color="grey"></a-box>
+                </a-entity>
+            </a-entity>
         </a-entity>
 
-        <a-entity id="building23" position="0 0 0" class="fridd">
-            <a-entity id="building23SectionA" position="0 0 0">
-                <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
-                <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
+        <!--Energy Efficency Graph-->
+        <a-entity id="energyGraph" visible="false">
+            <a-entity id="energyGraphBase">
+                <a-text position="-1.5 7.2 0.1" scale="3 3 3" color="black" value="A"></a-text>
+                <a-text position="-1.5 6 0.1" scale="3 3 3" color="black" value="B"></a-text>
+                <a-text position="-1.5 4.8 0.1" scale="3 3 3" color="black" value="C"></a-text>
+                <a-text position="-1.5 3.6 0.1" scale="3 3 3" color="black" value="D"></a-text>
+                <a-text position="-1.5 2.4 0.1" scale="3 3 3" color="black" value="E"></a-text>
+                <a-text position="-1.5 1.2 0.1" scale="3 3 3" color="black" value="F"></a-text>
+                <a-text position="-1.5 0 0.1" scale="3 3 3" color="black" value="G"></a-text>
+
+                <a-entity id="arrowA" position="0 7.2 0" scale="1 1 1">
+                    <a-plane position="0 0 0" height="1" width="4" color="#006108"></a-plane>
+                    <a-plane position="2 0 0" height="0.71" width="0.71" rotation="0 0 45" color="#006108"></a-plane>
+                </a-entity>
+                <a-entity id="arrowB" position="0.4 6 0" scale="1.2 1 1">
+                    <a-plane position="0 0 0" height="1" width="4" color="#05a813"></a-plane>
+                    <a-plane position="2 0 0" height="0.71" width="0.71" rotation="0 0 45" color="#05a813"></a-plane>
+                </a-entity>
+                <a-entity id="arrowC" position="0.8 4.8 0" scale="1.4 1 1">
+                    <a-plane position="0 0 0" height="1" width="4" color="#8dfc97"></a-plane>
+                    <a-plane position="2 0 0" height="0.71" width="0.71" rotation="0 0 45" color="#8dfc97"></a-plane>
+                </a-entity>
+                <a-entity id="arrowD" position="1.2 3.6 0" scale="1.6 1 1">
+                    <a-plane position="0 0 0" height="1" width="4" color="#edf50a"></a-plane>
+                    <a-plane position="2 0 0" height="0.71" width="0.71" rotation="0 0 45" color="#edf50a"></a-plane>
+                </a-entity>
+                <a-entity id="arrowE" position="1.6 2.4 0" scale="1.8 1 1">
+                    <a-plane position="0 0 0" height="1" width="4" color="#d1ab11"></a-plane>
+                    <a-plane position="2 0 0" height="0.71" width="0.71" rotation="0 0 45" color="#d1ab11"></a-plane>
+                </a-entity>
+                <a-entity id="arrowF" position="2 1.2 0" scale="2 1 1">
+                    <a-plane position="0 0 0" height="1" width="4" color="#e39000"></a-plane>
+                    <a-plane position="2 0 0" height="0.71" width="0.71" rotation="0 0 45" color="#e39000"></a-plane>
+                </a-entity>
+                <a-entity id="arrowG" position="2.4 0 0" scale="2.2 1 1">
+                    <a-plane position="0 0 0" height="1" width="4" color="#e30000"></a-plane>
+                    <a-plane position="2 0 0" height="0.71" width="0.71" rotation="0 0 45" color="#e30000"></a-plane>
+                </a-entity>
             </a-entity>
-            <a-entity id="building23SectionB" position="0 0 0" rotation="0 90 0">
-                <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
-                <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
+            <a-entity id="selectionA" position="8.5 7.2 0" visible="false">
+                <a-plane position="0.5 0 0" height="1" width="1" color="#006108"></a-plane>
+                <a-plane position="0 0 0" height="0.71" width="0.71" rotation="0 0 45" color="#006108"></a-plane>
+                <a-text position="0.2 0 0.1" scale="3 3 3" color="black" value="#"></a-text>
             </a-entity>
-            <a-entity id="building23SectionC" position="-8 0 -8">
-                <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
-                <a-box depth="6" width="2" height="3" position="4 1.5 1s" color="grey"></a-box>
+            <a-entity id="selectionB" position="8.5 6 0" visible="false">
+                <a-plane position="0.5 0 0" height="1" width="1" color="#05a813"></a-plane>
+                <a-plane position="0 0 0" height="0.71" width="0.71" rotation="0 0 45" color="#05a813"></a-plane>
+                <a-text position="0.2 0 0.1" scale="3 3 3" color="black" value="#"></a-text>
             </a-entity>
-            <a-entity id="building23SectionD" position="-6 0 -14">
-                <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
-                <a-box depth="6" width="2" height="3" position="4 1.5 -1" color="grey"></a-box>
+            <a-entity id="selectionC" position="8.5 4.8 0" visible="false">
+                <a-plane position="0.5 0 0" height="1" width="1" color="#8dfc97"></a-plane>
+                <a-plane position="0 0 0" height="0.71" width="0.71" rotation="0 0 45" color="#8dfc97"></a-plane>
+                <a-text position="0.2 0 0.1" scale="3 3 3" color="black" value="#"></a-text>
+            </a-entity>
+            <a-entity id="selectionD" position="8.5 3.6 0" visible="false">
+                <a-plane position="0.5 0 0" height="1" width="1" color="#edf50a"></a-plane>
+                <a-plane position="0 0 0" height="0.71" width="0.71" rotation="0 0 45" color="#edf50a"></a-plane>
+                <a-text position="0.2 0 0.1" scale="3 3 3" color="black" value="#"></a-text>
+            </a-entity>
+            <a-entity id="selectionE" position="8.5 2.4 0" visible="false">
+                <a-plane position="0.5 0 0" height="1" width="1" color="#d1ab11"></a-plane>
+                <a-plane position="0 0 0" height="0.71" width="0.71" rotation="0 0 45" color="#d1ab11"></a-plane>
+                <a-text position="0.2 0 0.1" scale="3 3 3" color="black" value="#"></a-text>
+            </a-entity>
+            <a-entity id="selectionF" position="8.5 1.2 0" visible="false">
+                <a-plane position="0.5 0 0" height="1" width="1" color="#e39000"></a-plane>
+                <a-plane position="0 0 0" height="0.71" width="0.71" rotation="0 0 45" color="#e39000"></a-plane>
+                <a-text position="0.2 0 0.1" scale="3 3 3" color="black" value="#"></a-text>
+            </a-entity>
+            <a-entity id="selectionG" position="8.5 0 0" visible="false">
+                <a-plane position="0.5 0 0" height="1" width="1" color="#e30000"></a-plane>
+                <a-plane position="0 0 0" height="0.71" width="0.71" rotation="0 0 45" color="#e30000"></a-plane>
+                <a-text position="0.2 0 0.1" scale="3 3 3" color="black" value="#"></a-text>
             </a-entity>
         </a-entity>
-
-        <a-entity id="building24" position="12 0 -8" class="fridd">
-            <a-entity id="building24SectionA" position="0 0 -6">
-                <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
-                <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
-            </a-entity>
-            <a-entity id="building24SectionB" position="-2 0 0">
-                <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
-                <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
-            </a-entity>
-            <a-entity id="building24SectionC" position="0 0 -6" rotation="0 90 0">
-                <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
-                <a-box depth="6" width="2" height="3" position="4 1.5 1s" color="grey"></a-box>
-            </a-entity>
-            <a-entity id="building24SectionD" position="-6 0 -4" rotation="0 90 0">
-                <a-box depth="6" width="4" height="3" position="4 1.5 0" color="grey"></a-box>
-                <a-box depth="8" width="2" height="3" position="4 1.5 0" color="grey"></a-box>
-            </a-entity>
-        </a-entity>
-
-        <a-entity id="building30" position="14 0 14" class="fridd">
-            <a-entity id="building30SectionA" position="0 0 -6">
-                <a-box depth="6" width="4" height="3" position="0 1.5 0" color="grey"></a-box>
-                <a-box depth="8" width="2" height="3" position="0 1.5 0" color="grey"></a-box>
-            </a-entity>
-            <a-entity id="building30SectionB" position="2 0 0">
-                <a-box depth="6" width="4" height="3" position="0 1.5 0" color="grey"></a-box>
-                <a-box depth="8" width="2" height="3" position="0 1.5 0" color="grey"></a-box>
-            </a-entity>
-        </a-entity>
-
-
 
     </a-scene>
 
+    <!-- Side Panel Information-->
     <div id="mySidebar" class="sidebar">
-        <div>
-            <button onclick="selectFridd">Select Fridd</button>
-        </div>
+
         <button class="openbtn" onclick="closeNav()">CLOSE</button>
+
         <h1 id="type">Map Area</h1>
         <h2 id="subType">If you're reading this an error has occured</h2>
+        <img id="dispImg" src="" />
         <p id="subTypeDesc">
             This Error has occured most likely due to a failure to swap the innerHTML of this section with the intended description
         </p>
     </div>
 
+    <!-- Menu System-->
+    <div style='position: fixed; bottom: 10px; width:100%; text-align: center; z-index: 1;'>
+        <button onclick="selectFridd()">Select Fridd</button>
+        <button onclick="toFridd()">Jump To Fridd</button>
+        <button>N/A</button>
+        <button>N/A</button>
+        <button>N/A</button>
+        <div class="slidecontainer">
+            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+        </div>
+    </div>
+
+
     <script>
-        var scene = d3.select("a-scene")
+        /*
+         * Set up functions to defaut colors of areas, loaded by passing in the relevant zone anf changing the base color from gray to new color
+         * this gets round the highlighting issue
+         * function getColor(buildingClass)
+         * function setColor(buildingClass,color)
+         */
+        var slider = document.getElementById("myRange");
+        slider.oninput = function () { rotateCurrentModel(slider.value) }
+        var friddSite = d3.select('#friddSite');
+
+        //Camera & Scene
+        var scene = d3.select("a-scene");
+        var camera = d3.select("#camera");
+        var cameraRot = d3.select('#cameraRot');
+
+        //Display Data Controllers
         var x = document.getElementById("type");
         var y = document.getElementById("subType");
         var z = document.getElementById("subTypeDesc");
-        var image = scene.selectAll("a-image.displayImg").data("displayImg")
+        var dispImg = document.getElementById("dispImg");
+        var image = scene.selectAll("a-image.displayImg").data("displayImg");
 
-        loadDataToModel("building18", "Friddoedd Site", "Y Brailsfordd (Gym and Leisure Center)", "Gym and Leisure Center", image);
-        loadDataToModel("building19", "Friddoedd Site", "Elidir Halls", "A generic halls building");
-        loadDataToModel("building20", "Friddoedd Site", "Enlli Halls", "The Left of the 3");
-        loadDataToModel("building21", "Friddoedd Site", "Peris Halls", "The Middle of the 3");
-        loadDataToModel("building22", "Friddoedd Site", "Alaw Halls", "The Right of the 3");
-        loadDataToModel("building23", "Friddoedd Site", "Y Borth Halls", "Seperated into multiple blocks these older buildings ...");
-        loadDataToModel("building24", "Friddoedd Site", "Cefn y Coed Halls", "Seperated into multiple blocks these older buildings ...");
-        loadDataToModel("building30", "Friddoedd Site", "Y Glyder Halls & Security Lodge", "A Halls building and a security lodge");
+        //Boolean Variables
+        var friddSelected = false;
 
-        //Sidebar Functionss
+        //Energy Graph Variables
+        var energySavingGraph = d3.select("#energyGraph")
+        var selectionA = d3.select("#selectionA");
+        var selectionB = d3.select("#selectionB");
+        var selectionC = d3.select("#selectionC");
+        var selectionD = d3.select("#selectionD");
+        var selectionE = d3.select("#selectionE");
+        var selectionF = d3.select("#selectionF");
+        var selectionG = d3.select("#selectionG");
+
+        //Data Insertion
+        loadDataToModel("building18", "Friddoedd Site", "Y Brailsfordd (Gym and Leisure Center)", "Gym and Leisure Center", "http://www.bangor.ac.uk/brailsford/images/outside.jpg", 1);
+        loadDataToModel("building19", "Friddoedd Site", "Elidir Halls", "A generic halls building", "https://rhysclawdd.github.io/Elidir.jpg", 2);
+        loadDataToModel("building20", "Friddoedd Site", "Enlli Halls", "The Left of the 3", "https://www.bangor.ac.uk/sites/default/files/styles/scale_900/public/2020-05/Enlli.jpg?itok=-yLcGw3P", 3);
+        loadDataToModel("building21", "Friddoedd Site", "Peris Halls", "The Middle of the 3", "https://rhysclawdd.github.io/Peris.jpg", 4);
+        loadDataToModel("building22", "Friddoedd Site", "Alaw Halls", "The Right of the 3", "https://www.bangor.ac.uk/sites/default/files/styles/scale_900/public/2020-06/Alaw%20-%20newer.jpg?itok=Eug5PnUi", 5);
+        loadDataToModel("building23", "Friddoedd Site", "Y Borth Halls", "Seperated into multiple blocks these older buildings ...", "https://www.bangor.ac.uk/sites/default/files/styles/scale_900/public/2020-05/Borth.jpg?itok=n_UNGRDp", 6);
+        loadDataToModel("building24", "Friddoedd Site", "Cefn y Coed Halls", "Seperated into multiple blocks these older buildings ...", "https://www.bangor.ac.uk/sites/default/files/styles/scale_900/public/2020-05/Cefn%20y%20Coed.jpg?itok=n82y0ohJ", 7);
+        loadDataToModel("building30", "Friddoedd Site", "Y Glyder Halls & Security Lodge", "A Halls building and a security lodge", "https://rhysclawdd.github.io/Glyder.jpg", 1);
+
+        //Sidebar Functions
         function openNav() {
             document.getElementById("mySidebar").style.width = "33%";
             document.getElementById("mySidebar").style.paddingLeft = "32px";
@@ -218,8 +340,9 @@
         function closeNav() {
             document.getElementById("mySidebar").style.width = "0";
             document.getElementById("mySidebar").style.paddingLeft = "0";
+            energySavingGraph.attr({ visible: 'false' })
         }
-        function loadDataToModel(buildingID, type, subtype, subtypeDesc, image) {
+        function loadDataToModel(buildingID, type, subtype, subtypeDesc, imgToDisp, energyGraphRating) {
             console.log("#" + buildingID)
             var buildingID = d3.select("#" + buildingID)
                 .on("click", function () {
@@ -227,11 +350,12 @@
                     x.innerHTML = type;
                     y.innerHTML = subtype;
                     z.innerHTML = subtypeDesc;
+                    dispImg.src = imgToDisp;
+                    energyEfficencyGraphSelection(energyGraphRating)
+                    moveGraph(buildingID, energySavingGraph)
+
                     openNav()
-                    image.enter().append("a-image")
-                    image.attr({
-                        src: "#perisImg"
-                    })
+
                 })
                 .on("mouseenter", function () {
                     if (this.hovering) return
@@ -250,10 +374,70 @@
                 })
         }
         function selectFridd() {
-            var fridd = d3.selectAll(".fridd")
-                .attr({
-                    "color": 'red'
-                })
+            if (friddSelected == false)
+                friddSelected = true;
+            else
+                friddSelected = false;
+
+            console.log("Fridd Selected Status: " + friddSelected)
+
+            friddSite.selectAll("a-box").attr({
+                "color": 'red'
+            })
+        }
+        function toFridd() {
+            camera.attr({
+                "position": '4 30 40'
+            })
+        }
+        function rotateCurrentModel(sliderValue) {
+            cameraRot.attr({
+                "rotation": '0 ' + 360 / 100 * sliderValue + ' 0'
+            })
+            energySavingGraph.attr({
+                "rotation": '0 ' + 360 / 100 * sliderValue + ' 0'
+            })
+        }
+
+        function moveGraph(newPosObj, graphToMov) {
+            energySavingGraph.attr({ visible: 'true' })
+            var newPos = newPosObj.attr("position")
+            graphToMov.attr({ "position": newPos.x + ' 5 ' + newPos.z })
+        }
+        function energyEfficencyGraphSelection(rating) {
+            clearGraph()
+            switch (rating) {
+                case 1:
+                    selectionA.attr({ "visible": 'true' });
+                    break;
+                case 2:
+                    selectionB.attr({ "visible": 'true' });
+                    break;
+                case 3:
+                    selectionC.attr({ "visible": 'true' });
+                    break;
+                case 4:
+                    selectionD.attr({ "visible": 'true' });
+                    break;
+                case 5:
+                    selectionE.attr({ "visible": 'true' });
+                    break;
+                case 6:
+                    selectionF.attr({ "visible": 'true' });
+                    break;
+                case 7:
+                    selectionG.attr({ "visible": 'true' });
+                    break;
+            }
+        }
+        function clearGraph() {
+            selectionA.attr({ visible: 'false' })
+            selectionB.attr({ visible: 'false' })
+            selectionC.attr({ visible: 'false' })
+            selectionD.attr({ visible: 'false' })
+            selectionE.attr({ visible: 'false' })
+            selectionF.attr({ visible: 'false' })
+            selectionG.attr({ visible: 'false' })
         }
     </script>
 </body>
