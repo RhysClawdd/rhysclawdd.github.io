@@ -50,7 +50,7 @@
 
       // 相机 透视相机
       this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-      this.camera.position.set(0, -70, 150);
+      this.camera.position.set(0, -20, 40);
       this.camera.lookAt(0, 0, 0);
 
       this.setController(); // 设置控制
@@ -116,7 +116,7 @@
       let _this = this;
 
       // 墨卡托投影转换
-        const projection = d3.geoMercator().center([0, 0]).scale(200).translate([100, 100]);
+        const projection = d3.geoMercator().center([0, 0]).scale(200).translate([0, 0]);
 
       chinaJson.features.forEach(elem => {
         // 定一个省份3D对象
@@ -255,7 +255,7 @@
           break; // 只取第一个
         }
       }
-        this.createAuthorityDisp();
+      this.createAuthorityDisp();
 
       this.renderer.render(this.scene, this.camera);
     }
