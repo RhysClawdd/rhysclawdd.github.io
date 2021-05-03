@@ -124,8 +124,9 @@
         // 每个的 坐标 数组
         const coordinates = elem.geometry.coordinates;
         // 循环坐标数组
-        coordinates.forEach(multiPolygon => {
+          coordinates.forEach(multiPolygon => {
 
+          //White Outline
           multiPolygon.forEach(polygon => {
             const shape = new THREE.Shape();
             const lineMaterial = new THREE.LineBasicMaterial({
@@ -141,18 +142,20 @@
               shape.lineTo(x, -y);
               lineGeometry.vertices.push(new THREE.Vector3(x, -y, 4.01));
             }
-
+            //Visual Depth
             const extrudeSettings = {
-              depth: 2,
+              depth: 4,
               bevelEnabled: false
             };
 
-            const geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
-            const material = new THREE.MeshBasicMaterial({
+              const geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+            //Material 1 shown when not hovered
+            const material2 = new THREE.MeshBasicMaterial({
               color: '#02A1E2',
               transparent: true,
               opacity: 0.6
             });
+            //Material 2 shown when hovered
             const material1 = new THREE.MeshBasicMaterial({
               color: '#3480C4',
               transparent: true,
@@ -160,7 +163,7 @@
             });
             /* const material = new THREE.MeshBasicMaterial({ color: '#dedede', transparent: false, opacity: 0.6 });
             const material1 = new THREE.MeshBasicMaterial({ color: '#dedede', transparent: false, opacity: 0.5 }); */
-            const mesh = new THREE.Mesh(geometry, [material, material1]);
+            const mesh = new THREE.Mesh(geometry, [material1, material2]);
             const line = new THREE.Line(lineGeometry, lineMaterial);
             province.add(mesh);
             province.add(line)
