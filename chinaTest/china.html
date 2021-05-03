@@ -15,13 +15,13 @@
       overflow: hidden;
     }
 
-    #provinceInfo {
-      position: absolute;
-      z-index: 2;
-      background: white;
-      padding: 10px;
-      visibility: hidden;
-    }
+      #authorityDisp {
+          position: absolute;
+          z-index: 2;
+          background: white;
+          padding: 10px;
+          visibility: hidden;
+      }
   </style>
   <script src="./js/three.js"></script>
   <script src="./js/OrbitControls.js"></script>
@@ -30,7 +30,7 @@
 </head>
 
 <body>
-  <div id="provinceInfo"></div>
+  <div id="authorityDisp"></div>
 </body>
 <script>
   class lineMap {
@@ -39,7 +39,7 @@
     }
 
     init() {
-      this.provinceInfo = document.getElementById('provinceInfo');
+        this.authorityDisp = document.getElementById('authorityDisp');
       // 渲染器
       this.renderer = new THREE.WebGLRenderer();
       this.renderer.setSize(window.innerWidth, window.innerHeight);
@@ -120,7 +120,7 @@
 
       chinaJson.features.forEach(elem => {
         // 定一个省份3D对象
-        const province = new THREE.Object3D();
+        const authority = new THREE.Object3D();
         // 每个的 坐标 数组
         const coordinates = elem.geometry.coordinates;
         // 循环坐标数组
@@ -149,14 +149,14 @@
             };
 
               const geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
-            //Material 1 shown when not hovered
-            const material2 = new THREE.MeshBasicMaterial({
+            //Material 1 shown on the face of the model
+            const material1 = new THREE.MeshBasicMaterial({
               color: '#02A1E2',
               transparent: true,
               opacity: 0.6
             });
-            //Material 2 shown when hovered
-            const material1 = new THREE.MeshBasicMaterial({
+            //Material 2 shown on the side of the model
+            const material2 = new THREE.MeshBasicMaterial({
               color: '#3480C4',
               transparent: true,
               opacity: 0.5
@@ -165,21 +165,21 @@
             const material1 = new THREE.MeshBasicMaterial({ color: '#dedede', transparent: false, opacity: 0.5 }); */
             const mesh = new THREE.Mesh(geometry, [material1, material2]);
             const line = new THREE.Line(lineGeometry, lineMaterial);
-            province.add(mesh);
-            province.add(line)
+              authority.add(mesh);
+              authority.add(line)
 
           })
 
         })
 
         // 将geo的属性放到省份模型中
-        province.properties = elem.properties;
+          authority.properties = elem.properties;
         if (elem.properties.contorid) {
           const [x, y] = projection(elem.properties.contorid);
-          province.properties._centroid = [x, y];
+            authority.properties._centroid = [x, y];
         }
 
-        _this.map.add(province);
+          _this.map.add(authority);
 
       })
 
@@ -201,8 +201,8 @@
         _this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
         _this.eventOffset.x = event.clientX;
         _this.eventOffset.y = event.clientY;
-        this.provinceInfo.style.left = _this.eventOffset.x + 2 + 'px';
-        this.provinceInfo.style.top = _this.eventOffset.y + 2 + 'px';
+          this.authorityDisp.style.left = _this.eventOffset.x + 2 + 'px';
+          this.authorityDisp.style.top = _this.eventOffset.y + 2 + 'px';
       }
 
       window.addEventListener('mousemove', onMouseMove, false);
@@ -255,20 +255,20 @@
           break; // 只取第一个
         }
       }
-      this.createProvinceInfo();
+        this.createAuthorityDisp();
 
       this.renderer.render(this.scene, this.camera);
     }
 
-    createProvinceInfo() { // 显示省份的信息      
+      createAuthorityDisp() { // 显示省份的信息      
       if (this.activeInstersect.length !== 0 && this.activeInstersect[0].object.parent.properties.name) {
         var properties = this.activeInstersect[0].object.parent.properties;
 
-        this.provinceInfo.textContent = properties.name;
+          this.authorityDisp.textContent = properties.name;
 
-        this.provinceInfo.style.visibility = 'visible';
+          this.authorityDisp.style.visibility = 'visible';
       } else {
-        this.provinceInfo.style.visibility = 'hidden';
+          this.authorityDisp.style.visibility = 'hidden';
       }
 
 
