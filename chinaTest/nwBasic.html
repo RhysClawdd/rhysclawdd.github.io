@@ -58,7 +58,7 @@
                 var x = 0,
                     y = 0;
                 let points = [];
-                points.push(new THREE.Vector2(0,-13));
+                points.push(new THREE.Vector2(0, -13));
                 points.push(new THREE.Vector2(-2, -10));
                 points.push(new THREE.Vector2(-7, -8));
                 points.push(new THREE.Vector2(-7, -6));
@@ -96,14 +96,16 @@
         });
     </script>
     <div>
-        <h1>Test 7</h1>
+        <h1>Test 8</h1>
     </div>
     <a-scene>
-        <a-entity position="0 0 0" rotation="90 0 0" ang></a-entity>
+        <a-entity position="0 0 0" depth="4" rotation="90 0 0" ang></a-entity>
         <a-entity position="0 0 0" rotation="90 0 0" gwy></a-entity>
 
     </a-scene>
-
+    <div>
+        <h1>Testing overwrite</h1>
+    </div>
 
 </body>
 </html>
