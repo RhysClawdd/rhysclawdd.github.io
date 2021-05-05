@@ -15,7 +15,7 @@
     <script>
 
         
-            AFRAME.registerComponent('ang', {
+            AFRAME.registerComponent('foo', {
                 init: function() {
                 var x = 0,
                   y = 0;
@@ -61,10 +61,10 @@
 
 
     <div>
-        <h1>Test 1</h1>
+        <h1>Test 2</h1>
     </div>
     <a-scene>
-        <a-entity position="0 0 -2" ang></a-entity>
+        <a-entity id="ang" position="0 0 0" foo></a-entity>
 
     </a-scene>
 
