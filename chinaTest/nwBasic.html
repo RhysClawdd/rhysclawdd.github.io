@@ -13,19 +13,19 @@
 <body>
 
     <script>
-        AFRAME.registerComponent('foo', {
+        AFRAME.registerComponent('ang', {
             init: function () {
                 var x = 0,
                     y = 0;
                 let points = [];
-                points.push(new THREE.Vector2(4, 6));
-                points.push(new THREE.Vector2(8, 6));
-                points.push(new THREE.Vector2(9, 4));
-                points.push(new THREE.Vector2(11, 4));
-                points.push(new THREE.Vector2(7, 0));
-                points.push(new THREE.Vector2(4, 3));
-                points.push(new THREE.Vector2(2.5, 5));
-                points.push(new THREE.Vector2(3, 3));
+                points.push(new THREE.Vector2(4, 0));
+                points.push(new THREE.Vector2(8, 0));
+                points.push(new THREE.Vector2(9, -2));
+                points.push(new THREE.Vector2(11, -2));
+                points.push(new THREE.Vector2(7, -6));
+                points.push(new THREE.Vector2(4, -3));
+                points.push(new THREE.Vector2(2.5, -1));
+                points.push(new THREE.Vector2(3, -3));
 
 
                 for (var i = 0; i < points.length; i++) {
@@ -35,7 +35,7 @@
 
 
                 var extrudedGeometry = new THREE.ExtrudeGeometry(shape, {
-                    amount: 5,
+                    amount: 0.1,
                     bevelEnabled: false
                 });
 
@@ -53,13 +53,54 @@
                 this.el.object3D.add(mesh);
             }
         });
+        AFRAME.registerComponent('gwy', {
+            init: function () {
+                var x = 0,
+                    y = 0;
+                let points = [];
+                points.push(new THREE.Vector2(0,-13));
+                points.push(new THREE.Vector2(2, -10));
+                points.push(new THREE.Vector2(7, -8));
+                points.push(new THREE.Vector2(7, -6));
+                points.push(new THREE.Vector2(10, -4));
+                points.push(new THREE.Vector2(14, -4));
+                points.push(new THREE.Vector2(10, -13));
+                points.push(new THREE.Vector2(6, -13));
+                points.push(new THREE.Vector2(3, -14));
+                points.push(new THREE.Vector2(0, -13));
 
+                for (var i = 0; i < points.length; i++) {
+                    points[i].multiplyScalar(0.25);
+                }
+                var shape = new THREE.Shape(points);
+
+
+                var extrudedGeometry = new THREE.ExtrudeGeometry(shape, {
+                    amount: 0.1,
+                    bevelEnabled: false
+                });
+
+                // Geometry doesn't do much on its own, we need to create a Mesh from it
+                var extrudedMesh = new THREE.Mesh(extrudedGeometry, new THREE.MeshPhongMaterial({
+                    color: 0xff0000
+                }));
+                this.el.object3D.add(extrudedMesh);
+
+                var geometry = new THREE.ShapeGeometry(shape);
+                var material = new THREE.MeshBasicMaterial({
+                    color: 0x00ff00
+                });
+                var mesh = new THREE.Mesh(geometry, material);
+                this.el.object3D.add(mesh);
+            }
+        });
     </script>
     <div>
-        <h1>Test 5</h1>
+        <h1>Test 6</h1>
     </div>
     <a-scene>
-        <a-entity position="0 0 -2" foo></a-entity>
+        <a-entity position="0 0 0" rotation="90 0 0" ang></a-entity>
+        <a-entity position="0 0 0" rotation="90 0 0" gwy></a-entity>
 
     </a-scene>
 
