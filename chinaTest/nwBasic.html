@@ -2,7 +2,7 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script> <!--On hover interactions-->
     <meta charset="utf-8" />
@@ -10,61 +10,56 @@
 
 </head>
 
-<script>
+<body>
+
+    <script>
+        AFRAME.registerComponent('foo', {
+            init: function () {
+                var x = 0,
+                    y = 0;
+                let points = [];
+                points.push(new THREE.Vector2(4, 6));
+                points.push(new THREE.Vector2(8, 6));
+                points.push(new THREE.Vector2(9, 4));
+                points.push(new THREE.Vector2(11, 4));
+                points.push(new THREE.Vector2(7, 0));
+                points.push(new THREE.Vector2(4, 3));
+                points.push(new THREE.Vector2(2.5, 5));
+                points.push(new THREE.Vector2(3, 3));
 
 
-    AFRAME.registerComponent('foo', {
-        init: function () {
-            var x = 0,
-                y = 0;
-            let points = [];
-            points.push(new THREE.Vector2(4, 6));
-            points.push(new THREE.Vector2(8, 6));
-            points.push(new THREE.Vector2(9, 4));
-            points.push(new THREE.Vector2(11, 4));
-            points.push(new THREE.Vector2(7, 0));
-            points.push(new THREE.Vector2(4, 3));
-            points.push(new THREE.Vector2(2.5, 5));
-            points.push(new THREE.Vector2(3, 3));
-
-            for (var i = 0; i < points.length; {
-                points[i].multiplyScalar(0.25);
-            }
+                for (var i = 0; i < points.length; i++) {
+                    points[i].multiplyScalar(0.25);
+                }
                 var shape = new THREE.Shape(points);
 
 
-            var extrudedGeometry = new THREE.ExtrudeGeometry(shape, {
-                amount: 5,
-                bevelEnabled: false
-            });
+                var extrudedGeometry = new THREE.ExtrudeGeometry(shape, {
+                    amount: 5,
+                    bevelEnabled: false
+                });
 
-            // Geometry doesn't do much on its own, we need to create a Mesh from it
-            var extrudedMesh = new THREE.Mesh(extrudedGeometry, new THREE.MeshPhongMaterial({
-                color: 0xff0000
-            }));
-            this.el.object3D.add(extrudedMesh);
+                // Geometry doesn't do much on its own, we need to create a Mesh from it
+                var extrudedMesh = new THREE.Mesh(extrudedGeometry, new THREE.MeshPhongMaterial({
+                    color: 0xff0000
+                }));
+                this.el.object3D.add(extrudedMesh);
 
-            var geometry = new THREE.ShapeGeometry(shape);
-            var material = new THREE.MeshBasicMaterial({
-                color: 0x00ff00
-            });
-            var mesh = new THREE.Mesh(geometry, material);
-            this.el.object3D.add(mesh);
-        }
-    });
+                var geometry = new THREE.ShapeGeometry(shape);
+                var material = new THREE.MeshBasicMaterial({
+                    color: 0x00ff00
+                });
+                var mesh = new THREE.Mesh(geometry, material);
+                this.el.object3D.add(mesh);
+            }
+        });
 
-</script>
-
-
-
-<body>
-
-
+    </script>
     <div>
-        <h1>Test 4</h1>
+        <h1>Test 5</h1>
     </div>
     <a-scene>
-        <a-entity id="ang" position="0 0 0" foo></a-entity>
+        <a-entity position="0 0 -2" foo></a-entity>
 
     </a-scene>
 
