@@ -26,6 +26,7 @@
         }
 
         function initMap(mapData) {
+            const projection = d3.geoMercator().center([0, 0]).scale(200).translate([0, 0]);
 
             mapData.features.forEach(elem => {
 
@@ -34,6 +35,7 @@
                 coordinates.forEach(multiPolygon => {
 
                     multiPolygon.forEach(polygon => {
+
                         const shape = new THREE.Shape();
 
                         const lineGeometry = new THREE.Geometry();
@@ -45,6 +47,21 @@
                             }
                             shape.lineTo(x, -y);
                             lineGeometry.vertices.push(new THREE.Vector3(x, -y));
+                            var extrudedGeometry = new THREE.ExtrudeGeometry(shape, {
+                                amount: 5,
+                                bevelEnabled: false
+                            });
+                            var extrudedMesh = new THREE.Mesh(extrudedGeometry, new THREE.MeshPhongMaterial({
+                                color: 0xff0000
+                            }));
+                            this.el.object3D.add(extrudedMesh);
+
+                            var geometry = new THREE.ShapeGeometry(shape);
+                            var material = new THREE.MeshBasicMaterial({
+                                color: 0x00ff00
+                            });
+                            var mesh = new THREE.Mesh(geometry, material);
+                            this.el.object3D.add(mesh);
                         }
                     });
                 });
@@ -54,8 +71,9 @@
                 AFRAME.registerComponent('foo', {
                         init: function () {
                             var x = 0,
-                                y = 0;
-                            let points = [];
+                            y = 0;
+
+                        let points = [];
                             points.push(new THREE.Vector2(0, 0));
                             points.push(new THREE.Vector2(3, 0));
                             points.push(new THREE.Vector2(5, 2));
