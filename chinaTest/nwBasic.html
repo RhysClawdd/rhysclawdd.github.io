@@ -13,20 +13,20 @@
 <body>
 
     <script>
-
         AFRAME.registerComponent('ang', {
             init: function () {
                 var x = 0,
                     y = 0;
                 let points = [];
-                points.push(new THREE.Vector2(12, 32));
-                points.push(new THREE.Vector2(9, 34));
-                points.push(new THREE.Vector2(8, 35));
-                points.push(new THREE.Vector2(9, 35));
-                points.push(new THREE.Vector2(10, 37));
-                points.push(new THREE.Vector2(13, 37));
-                points.push(new THREE.Vector2(14, 35));
-                points.push(new THREE.Vector2(16, 35));
+                points.push(new THREE.Vector2(4, 0));
+                points.push(new THREE.Vector2(8, 0));
+                points.push(new THREE.Vector2(9, -2));
+                points.push(new THREE.Vector2(11, -2));
+                points.push(new THREE.Vector2(7, -6));
+                points.push(new THREE.Vector2(4, -3));
+                points.push(new THREE.Vector2(2.5, -1));
+                points.push(new THREE.Vector2(3, -3));
+
 
                 for (var i = 0; i < points.length; i++) {
                     points[i].multiplyScalar(0.25);
@@ -58,15 +58,15 @@
                 var x = 0,
                     y = 0;
                 let points = [];
-                points.push(new THREE.Vector(14, 21));
-                points.push(new THREE.Vector(13, 22));
-                points.push(new THREE.Vector(14, 24));
-                points.push(new THREE.Vector(13, 26));
-                points.push(new THREE.Vector(14, 27));
-                points.push(new THREE.Vector(13, 27));
-                points.push(new THREE.Vector(15, 28));
-                points.push(new THREE.Vector(11, 27));
-                points.push(new THREE.Vector(14, 21));
+                points.push(new THREE.Vector2(0,-13));
+                points.push(new THREE.Vector2(, -10));
+                points.push(new THREE.Vector2(9, -2));
+                points.push(new THREE.Vector2(11, -2));
+                points.push(new THREE.Vector2(7, -6));
+                points.push(new THREE.Vector2(4, -3));
+                points.push(new THREE.Vector2(2.5, -1));
+                points.push(new THREE.Vector2(3, -3));
+
 
                 for (var i = 0; i < points.length; i++) {
                     points[i].multiplyScalar(0.25);
@@ -93,20 +93,16 @@
                 this.el.object3D.add(mesh);
             }
         });
-
-        
     </script>
     <div>
-        <h1>Test 9</h1>
+        <h1>Test 5</h1>
     </div>
     <a-scene>
         <a-entity position="0 0 0" rotation="90 0 0" ang></a-entity>
         <a-entity position="0 0 0" rotation="90 0 0" gwy></a-entity>
 
     </a-scene>
-    <div>
-        <h1>Testing overwrite</h1>
-    </div>
+
 
 </body>
 </html>
