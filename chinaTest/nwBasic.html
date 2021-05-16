@@ -14,12 +14,6 @@
 
     <script>
 
-
-
-
-
-
-
         AFRAME.registerComponent('ang', {
             init: function () {
                 var x = 0,
@@ -69,22 +63,15 @@
                 points.push(new THREE.Vector(14, 24));
                 points.push(new THREE.Vector(13, 26));
                 points.push(new THREE.Vector(14, 27));
-                points.push(new THREE.Vector(13, 27.5));
+                points.push(new THREE.Vector(13, 27));
                 points.push(new THREE.Vector(15, 28));
                 points.push(new THREE.Vector(11, 27));
                 points.push(new THREE.Vector(14, 21));
-
-
-
-
-
-
 
                 for (var i = 0; i < points.length; i++) {
                     points[i].multiplyScalar(0.25);
                 }
                 var shape = new THREE.Shape(points);
-
 
                 var extrudedGeometry = new THREE.ExtrudeGeometry(shape, {
                     amount: 0.1,
@@ -107,7 +94,7 @@
         });
     </script>
     <div>
-        <h1>Test 8</h1>
+        <h1>Test 9</h1>
     </div>
     <a-scene>
         <a-entity position="0 0 0" depth="4" rotation="90 0 0" ang></a-entity>
