@@ -53,7 +53,7 @@
                 this.el.object3D.add(mesh);
             }
         });
-        /*AFRAME.registerComponent('gwy', {
+        AFRAME.registerComponent('gwy', {
             init: function () {
                 var x = 0,
                     y = 0;
@@ -73,6 +73,7 @@
                 }
                 var shape = new THREE.Shape(points);
 
+
                 var extrudedGeometry = new THREE.ExtrudeGeometry(shape, {
                     amount: 0.1,
                     bevelEnabled: false
@@ -91,14 +92,16 @@
                 var mesh = new THREE.Mesh(geometry, material);
                 this.el.object3D.add(mesh);
             }
-        });*/
+        });
+
+        
     </script>
     <div>
         <h1>Test 9</h1>
     </div>
     <a-scene>
-        <a-entity position="0 0 0" rotation="0 0 0" ang></a-entity>
-        <a-entity position="0 0 0" rotation="0 0 0" gwy></a-entity>
+        <a-entity position="0 0 0" rotation="90 0 0" ang></a-entity>
+        <a-entity position="0 0 0" rotation="90 0 0" gwy></a-entity>
 
     </a-scene>
     <div>
