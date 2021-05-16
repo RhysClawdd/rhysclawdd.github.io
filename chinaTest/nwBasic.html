@@ -91,24 +91,6 @@
                 points.push(new THREE.Vector2(-17, 22));
                 points.push(new THREE.Vector2(-16, 21));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 for (var i = 0; i < points.length; i++) {
                     points[i].multiplyScalar(0.25);
                 }
@@ -128,7 +110,7 @@
 
                 var geometry = new THREE.ShapeGeometry(shape);
                 var material = new THREE.MeshBasicMaterial({
-                    color: 0x00ff00
+                    color: 3c870e
                 });
                 var mesh = new THREE.Mesh(geometry, material);
                 this.el.object3D.add(mesh);
