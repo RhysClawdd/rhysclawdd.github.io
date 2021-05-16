@@ -104,13 +104,13 @@
 
                 // Geometry doesn't do much on its own, we need to create a Mesh from it
                 var extrudedMesh = new THREE.Mesh(extrudedGeometry, new THREE.MeshPhongMaterial({
-                    color: 0xff0000
+                    color: 0x3c870e
                 }));
                 this.el.object3D.add(extrudedMesh);
 
                 var geometry = new THREE.ShapeGeometry(shape);
                 var material = new THREE.MeshBasicMaterial({
-                    color: 3c870e
+                    color: 0x3c870e
                 });
                 var mesh = new THREE.Mesh(geometry, material);
                 this.el.object3D.add(mesh);
