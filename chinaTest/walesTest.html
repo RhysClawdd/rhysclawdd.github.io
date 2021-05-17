@@ -36,79 +36,85 @@
                 var authority = new THREE.Object3D();
                 var coordinates = elem.geometry.coordinates;
                 coordinates.forEach(multiPolygon => {
+                    for (let i = 0; i < multiPolygon.length; i++) {
+                        if (i == 0) {
+                            AFRAME.registerComponent('lad', {
+                                init: function () {
+                            const shape = new THREE.Shape();
+
+                            const lineGeometry = new THREE.Geometry();
+
+                            for (let i = 0; i < polygon.length; i++) {
+                                const [x, y] = projection(polygon[i]);
+                                if (i === 0) {
+                                    shape.moveTo(x, -y);
+                                }
+                                shape.lineTo(x, -y);
+                                lineGeometry.vertices.push(new THREE.Vector3(x, -y));
+                                var extrudedGeometry = new THREE.ExtrudeGeometry(shape, {
+                                    amount: 5,
+                                    bevelEnabled: false
+                                });
+                                var extrudedMesh = new THREE.Mesh(extrudedGeometry, new THREE.MeshPhongMaterial({
+                                    color: 0xff0000
+                                }));
+                                this.el.object3D.add(extrudedMesh);
+
+                                var geometry = new THREE.ShapeGeometry(shape);
+                                var material = new THREE.MeshBasicMaterial({
+                                    color: 0x00ff00
+                                });
+                                var mesh = new THREE.Mesh(geometry, material);
+                                this.el.object3D.add(mesh);
+                            }
+                        });
+                        }
 
                     multiPolygon.forEach(polygon => {
 
-                        const shape = new THREE.Shape();
-
-                        const lineGeometry = new THREE.Geometry();
-
-                        for (let i = 0; i < polygon.length; i++) {
-                            const [x, y] = projection(polygon[i]);
-                            if (i === 0) {
-                                shape.moveTo(x, -y);
-                            }
-                            shape.lineTo(x, -y);
-                            lineGeometry.vertices.push(new THREE.Vector3(x, -y));
-                            var extrudedGeometry = new THREE.ExtrudeGeometry(shape, {
-                                amount: 5,
-                                bevelEnabled: false
-                            });
-                            var extrudedMesh = new THREE.Mesh(extrudedGeometry, new THREE.MeshPhongMaterial({
-                                color: 0xff0000
-                            }));
-                            this.el.object3D.add(extrudedMesh);
-
-                            var geometry = new THREE.ShapeGeometry(shape);
-                            var material = new THREE.MeshBasicMaterial({
-                                color: 0x00ff00
-                            });
-                            var mesh = new THREE.Mesh(geometry, material);
-                            this.el.object3D.add(mesh);
-                        }
-                    });
+                        
                 });
             });
         }
 
-                AFRAME.registerComponent('foo', {
-                        init: function () {
-                            var x = 0,
-                            y = 0;
+        AFRAME.registerComponent('foo', {
+            init: function () {
+                var x = 0,
+                    y = 0;
 
-                        let points = [];
-                            points.push(new THREE.Vector2(0, 0));
-                            points.push(new THREE.Vector2(3, 0));
-                            points.push(new THREE.Vector2(5, 2));
-                            points.push(new THREE.Vector2(5, 5));
-                            points.push(new THREE.Vector2(2, 7));
+                let points = [];
+                points.push(new THREE.Vector2(0, 0));
+                points.push(new THREE.Vector2(3, 0));
+                points.push(new THREE.Vector2(5, 2));
+                points.push(new THREE.Vector2(5, 5));
+                points.push(new THREE.Vector2(2, 7));
 
-                            for (var i = 0; i < points.length; i++) {
-                                points[i].multiplyScalar(0.25);
-                            }
-                            var shape = new THREE.Shape(points);
+                for (var i = 0; i < points.length; i++) {
+                    points[i].multiplyScalar(0.25);
+                }
+                var shape = new THREE.Shape(points);
 
 
-                            var extrudedGeometry = new THREE.ExtrudeGeometry(shape, {
-                                amount: 5,
-                                bevelEnabled: false
-                            });
+                var extrudedGeometry = new THREE.ExtrudeGeometry(shape, {
+                    amount: 5,
+                    bevelEnabled: false
+                });
 
-                            // Geometry doesn't do much on its own, we need to create a Mesh from it
-                            var extrudedMesh = new THREE.Mesh(extrudedGeometry, new THREE.MeshPhongMaterial({
-                                color: 0xff0000
-                            }));
-                            this.el.object3D.add(extrudedMesh);
+                // Geometry doesn't do much on its own, we need to create a Mesh from it
+                var extrudedMesh = new THREE.Mesh(extrudedGeometry, new THREE.MeshPhongMaterial({
+                    color: 0xff0000
+                }));
+                this.el.object3D.add(extrudedMesh);
 
-                            var geometry = new THREE.ShapeGeometry(shape);
-                            var material = new THREE.MeshBasicMaterial({
-                                color: 0x00ff00
-                            });
-                            var mesh = new THREE.Mesh(geometry, material);
-                            this.el.object3D.add(mesh);
-                        }
-                    });
-        
+                var geometry = new THREE.ShapeGeometry(shape);
+                var material = new THREE.MeshBasicMaterial({
+                    color: 0x00ff00
+                });
+                var mesh = new THREE.Mesh(geometry, material);
+                this.el.object3D.add(mesh);
+            }
+        });
+
     </script>
     <div>
         <h1>Test</h1>
@@ -117,7 +123,5 @@
         <a-entity position="0 0 -2" foo></a-entity>
 
     </a-scene>
-
-
 </body>
 </html>
