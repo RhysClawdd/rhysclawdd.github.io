@@ -179,6 +179,7 @@
                 this.el.object3D.add(mesh);
             }
         });
+        var date = d3.select("#date")
         var counter = 0;
         var timer;
         function startSim() {
@@ -202,15 +203,16 @@
                 counter--;
                 runSim();
         }
-        function runSim() {
-            date = transData[0][counter];
+        function runSim() { 
             angExtr = 0.1 * transData[1][counter];
             conExtr = 0.1 * transData[2][counter];
             gwynExtr = 0.1 * transData[3][counter];
+            date.innnerHTML = transData[0][counter];
+
         }
     </script>
     <div>
-        <h1>Test 7</h1>
+        <h1>Test 8</h1>
     </div>
     <a-scene>
         <a-entity position="0 0 0" depth="4" rotation="90 0 180" ang></a-entity>
