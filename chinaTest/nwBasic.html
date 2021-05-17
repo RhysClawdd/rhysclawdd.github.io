@@ -131,7 +131,16 @@
                 points.push(new THREE.Vector2(-15, 31));
                 points.push(new THREE.Vector2(-16, 33));
                 points.push(new THREE.Vector2(-15, 34));//con bord strt
-                points.push(new THREE.Vector2(-15, 31));
+                points.push(new THREE.Vector2(-16, 34.5));
+                points.push(new THREE.Vector2(-16, 35));
+                points.push(new THREE.Vector2(-17, 34.5));
+                points.push(new THREE.Vector2(-18, 34.5));
+                points.push(new THREE.Vector2(-19, 35));
+                points.push(new THREE.Vector2(-19, 33));
+                points.push(new THREE.Vector2(-20, 32));
+                points.push(new THREE.Vector2(-20, 31));
+                points.push(new THREE.Vector2(-18, 29));
+                points.push(new THREE.Vector2(-19, 29));
 
 
                 for (var i = 0; i < points.length; i++) {
@@ -141,6 +150,7 @@
 
 
                 var extrudedGeometry = new THREE.ExtrudeGeometry(shape, {
+                    amount: 0.1,
                     bevelEnabled: false
                 });
 
