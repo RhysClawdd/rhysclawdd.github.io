@@ -22,7 +22,7 @@
         var angExtr = 0.1;
         var gwynExtr = 0.1;
         var conExtr = 0.1;
-        var date = "Date";
+            var date = "Date";
 
         AFRAME.registerComponent('ang', {
             init: function () {
@@ -193,12 +193,14 @@
         }
         function forwardSim() {
             counter++;
+            runSim();
         }
         function stopSim() {
             clearInterval(timer);
         }
-        function reverseSim() {
-            counter--;
+            function reverseSim() {
+                counter--;
+                runSim();
         }
         function runSim() {
             date = transData[0][counter];
@@ -208,13 +210,7 @@
         }
     </script>
     <div>
-        <h1>Test 6</h1>
-    </div>
-    <div style='position: fixed; bottom: 10px; width:100%; text-align: center; z-index: 1;'>
-        <button onclick="forwardSim()">></button>
-        <button onclick="stopSim()">||</button>
-        <button onclick="reverseSim()"><</button>
-        <h1 id="date">Date</h1>
+        <h1>Test 7</h1>
     </div>
     <a-scene>
         <a-entity position="0 0 0" depth="4" rotation="90 0 180" ang></a-entity>
@@ -223,6 +219,11 @@
 
     </a-scene>
 
-
+    <div style='position: fixed; bottom: 10px; width:100%; text-align: center; z-index: 1;'>
+        <button onclick="forwardSim()">></button>
+        <button onclick="stopSim()">||</button>
+        <button onclick="reverseSim()"><</button>
+        <h1 id="date">Date</h1>
+    </div>
 </body>
 </html>
