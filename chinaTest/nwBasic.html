@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -116,7 +116,7 @@
                 this.el.object3D.add(mesh);
             }
         });
-        AFRAME.registerComponent('gwy', {
+        AFRAME.registerComponent('con', {
             init: function () {
                 var x = 0,
                     y = 0;
@@ -145,13 +145,13 @@
 
                 // Geometry doesn't do much on its own, we need to create a Mesh from it
                 var extrudedMesh = new THREE.Mesh(extrudedGeometry, new THREE.MeshPhongMaterial({
-                    color: 0x3c870e
+                    color: 0x0383ad
                 }));
                 this.el.object3D.add(extrudedMesh);
 
                 var geometry = new THREE.ShapeGeometry(shape);
                 var material = new THREE.MeshBasicMaterial({
-                    color: 0x3c870e
+                    color: 0x0383ad
                 });
                 var mesh = new THREE.Mesh(geometry, material);
                 this.el.object3D.add(mesh);
@@ -163,6 +163,7 @@
     </div>
     <a-scene>
         <a-entity position="0 0 0" rotation="90 0 180" ang></a-entity>
+        <a-entity position="0 0 0" rotation="90 0 180" gwy></a-entity>
         <a-entity position="0 0 0" rotation="90 0 180" gwy></a-entity>
 
     </a-scene>
