@@ -13,9 +13,17 @@
 <body>
 
     <script>
+        var transData = [
+            ["01 Mar - 07 Mar", "08 Mar - 14 Mar", "15 Mar - 21 Mar", "22 Mar - 28 Mar", "29 Mar - 04 Apr", "05 Apr - 11 Apr", "12 Apr - 18 Apr", "19 Apr - 25 Apr", "26 Apr - 02 May", "03 May - 09 May", "10 May - 14 May"],
+            [2.9, 2.9, 4.3, 8.6, 8.6, 24.3, 30.0, 94.2, 91.4, 127.1, 77.1],
+            [5.1, 3.4, 5.1, 6.0, 6.0, 12.8, 8.5, 37.5, 52.0, 62.1, 68.3],
+            [2.4, 10.4, 10.4, 19.3, 28.1, 24.1, 26.5, 58.6, 32.1, 57.0, 65.0]];
+
         var angExtr = 0.1;
         var gwynExtr = 0.1;
         var conExtr = 0.1;
+            var date = "Date";
+
         AFRAME.registerComponent('ang', {
             init: function () {
                 var x = 0,
@@ -124,7 +132,7 @@
                 var x = 0,
                     y = 0;
                 let points = [];
-                
+
                 points.push(new THREE.Vector2(-20, 29));//con bord end
                 points.push(new THREE.Vector2(-18, 29));
                 points.push(new THREE.Vector2(-18, 28));
@@ -171,7 +179,33 @@
                 this.el.object3D.add(mesh);
             }
         });
-        conExtr = 0.2;
+        var counter = 0;
+        var timer;
+        function startSim() {
+            timer = setInterval(myClock, 1000);
+            function myClock() {
+                counter++;
+                if (counter == 0) {
+                    clearInterval(transData[0].length);
+                    alert("Reached zero");
+                }
+            }
+        }
+        function forwardSim() {
+            counter++;
+        }
+        function stopSim() {
+            clearInterval(timer);
+        }
+            function reverseSim() {
+                counter--;
+        }
+        function runSim() {
+            date = transData[0][counter];
+            angExtr = 0.1 * transData[1][counter];
+            conExtr = 0.1 * transData[2][counter];
+            gwynExtr = 0.1 * transData[3][counter];
+        }
     </script>
     <div>
         <h1>Test 5</h1>
@@ -179,10 +213,15 @@
     <a-scene>
         <a-entity position="0 0 0" depth="4" rotation="90 0 180" ang></a-entity>
         <a-entity position="0 0 0" rotation="90 0 180" gwy></a-entity>
-        <a-entity position="0 0 0" rotation="90 0 180" con depth="4"></a-entity>
+        <a-entity position="0 0 0" rotation="90 0 180" con></a-entity>
 
     </a-scene>
 
-
+    <div style='position: fixed; bottom: 10px; width:100%; text-align: center; z-index: 1;'>
+        <button onclick="forwardSim()">></button>
+        <button onclick="stopSim()">||</button>
+        <button onclick="reverseSim()"><</button>
+        <h1 id="date">Date</h1>
+    </div>
 </body>
 </html>
