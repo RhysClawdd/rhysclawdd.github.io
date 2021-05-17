@@ -116,6 +116,47 @@
                 this.el.object3D.add(mesh);
             }
         });
+        AFRAME.registerComponent('gwy', {
+            init: function () {
+                var x = 0,
+                    y = 0;
+                let points = [];
+                
+                points.push(new THREE.Vector2(-20, 29));//con bord end
+                points.push(new THREE.Vector2(-18, 29));
+                points.push(new THREE.Vector2(-18, 28));
+                points.push(new THREE.Vector2(-17, 29));
+                points.push(new THREE.Vector2(-16, 29));
+                points.push(new THREE.Vector2(-15, 30));
+                points.push(new THREE.Vector2(-15, 31));
+                points.push(new THREE.Vector2(-16, 33));
+                points.push(new THREE.Vector2(-15, 34));//con bord strt
+
+                for (var i = 0; i < points.length; i++) {
+                    points[i].multiplyScalar(0.25);
+                }
+                var shape = new THREE.Shape(points);
+
+
+                var extrudedGeometry = new THREE.ExtrudeGeometry(shape, {
+                    amount: 0.1,
+                    bevelEnabled: false
+                });
+
+                // Geometry doesn't do much on its own, we need to create a Mesh from it
+                var extrudedMesh = new THREE.Mesh(extrudedGeometry, new THREE.MeshPhongMaterial({
+                    color: 0x3c870e
+                }));
+                this.el.object3D.add(extrudedMesh);
+
+                var geometry = new THREE.ShapeGeometry(shape);
+                var material = new THREE.MeshBasicMaterial({
+                    color: 0x3c870e
+                });
+                var mesh = new THREE.Mesh(geometry, material);
+                this.el.object3D.add(mesh);
+            }
+        });
     </script>
     <div>
         <h1>Test 5</h1>
