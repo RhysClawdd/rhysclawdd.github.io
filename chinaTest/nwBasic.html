@@ -131,6 +131,8 @@
                 points.push(new THREE.Vector2(-15, 31));
                 points.push(new THREE.Vector2(-16, 33));
                 points.push(new THREE.Vector2(-15, 34));//con bord strt
+                points.push(new THREE.Vector2(-15, 31));
+
 
                 for (var i = 0; i < points.length; i++) {
                     points[i].multiplyScalar(0.25);
@@ -139,7 +141,6 @@
 
 
                 var extrudedGeometry = new THREE.ExtrudeGeometry(shape, {
-                    amount: 0.1,
                     bevelEnabled: false
                 });
 
@@ -164,7 +165,7 @@
     <a-scene>
         <a-entity position="0 0 0" depth="4" rotation="90 0 180" ang></a-entity>
         <a-entity position="0 0 0" rotation="90 0 180" gwy></a-entity>
-        <a-entity position="0 0 0" rotation="90 0 180" con></a-entity>
+        <a-entity position="0 0 0" rotation="90 0 180" con depth="4"></a-entity>
 
     </a-scene>
 
