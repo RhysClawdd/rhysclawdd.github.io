@@ -211,8 +211,7 @@
                 console.log(counter);
         }
         function runSim() {
-            anglesey.update();
-            gwynedd.update();
+            console.log(anglesey.getAttribute('ang'));
             angExtr = 0.1 * transData[1][counter];
             conExtr = 0.1 * transData[2][counter];
             gwynExtr = 0.1 * transData[3][counter];
@@ -225,7 +224,7 @@
         console.log(angExtr);
     </script>
     <div>
-        <h1>Test 16</h1>
+        <h1>Test 17</h1>
     </div>
     <a-scene>
         <a-entity position="0 0 0" depth="4" rotation="90 0 180" ang id="anglesey"></a-entity>
