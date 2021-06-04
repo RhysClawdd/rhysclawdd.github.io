@@ -24,9 +24,10 @@
         var conExtr = 0.1;
         var date = "Date";
 
-        var anglesey = d3.select("#anglesey");
-        var gwynedd = d3.select("#gwynedd");
-        var conwy = d3.select("#conwy");
+        var scene = d3.select("a-scene")
+        var anglesey = scene.selectAll("a-entity#anglesey")
+        var gwynedd = scene.selectAll("a-entity#gwynedd")
+        var conwy = scene.selectAll("a-entity#conwy")
 
         AFRAME.registerComponent('ang', {
             update: function () {
@@ -211,7 +212,7 @@
                 console.log(counter);
         }
         function runSim() {
-            console.log(anglesey.getAttribute('ang'));
+            anglesey.attr({ position: "0 5 0" });
             angExtr = 0.1 * transData[1][counter];
             conExtr = 0.1 * transData[2][counter];
             gwynExtr = 0.1 * transData[3][counter];
@@ -224,7 +225,7 @@
         console.log(angExtr);
     </script>
     <div>
-        <h1>Test 17</h1>
+        <h1>Test 18</h1>
     </div>
     <a-scene>
         <a-entity position="0 0 0" depth="4" rotation="90 0 180" ang id="anglesey"></a-entity>
