@@ -30,7 +30,7 @@
         var conwy = scene.selectAll("a-entity#conwy")
 
         AFRAME.registerComponent('ang', {
-            update: function () {
+            init: function () {
                 var x = 0,
                     y = 0;
                 let points = [];
@@ -212,7 +212,7 @@
                 console.log(counter);
         }
         function runSim() {
-            anglesey.attr({ position: "0 5 0" });
+            anglesey.attr({ position: "0 1 0" });
             angExtr = 0.1 * transData[1][counter];
             conExtr = 0.1 * transData[2][counter];
             gwynExtr = 0.1 * transData[3][counter];
@@ -231,7 +231,6 @@
         <a-entity position="0 0 0" depth="4" rotation="90 0 180" ang id="anglesey"></a-entity>
         <a-entity position="0 0 0" rotation="90 0 180" gwy id="gwynedd"></a-entity>
         <a-entity position="0 0 0" rotation="90 0 180" con id="conwy"></a-entity>
-
     </a-scene>
 
     <div style='position: fixed; bottom: 10px; width:100%; text-align: center; z-index: 1;'>
